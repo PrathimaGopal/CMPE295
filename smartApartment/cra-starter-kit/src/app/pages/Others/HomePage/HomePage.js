@@ -9,12 +9,12 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import JumboCardQuick from "@jumbo/components/JumboCardQuick";
-import {useTranslation} from "react-i18next";
 import {ASSET_IMAGES} from "../../../utils/constants/paths";
 import {getAssetPath} from "../../../utils/appHelpers";
 import { CardContent } from "@mui/material";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
+import Navbar from "../Navbar/Navbar";
 
 const itemData = [
   {
@@ -63,76 +63,75 @@ const HomePage = () => {
     setActiveLayout(LAYOUT_NAMES.SOLO_PAGE);
   });
 
-  const { t } = useTranslation();
-
   return (
     <Div>
       <React.Fragment>
-        <Typography variant="h1" mb={3}>
-          {t("Home Page")}
-        </Typography>
-        <JumboCardQuick
-          title={
-            <Typography variant="h6" color={"text.secondary"}>
-              SAC Apartments
-            </Typography>
-          }
-          subheader={
-            <Typography component={"h2"} variant="h1">
-              Welcome to the first Smart Apartments in San Jose, California
-            </Typography>
-          }
-          wrapperSx={{ pt: 0 }}
-        >
-          <Grid container spacing={3.75}>
-            <Grid item xs={12} md={6}>
-              <CardMedia
-                component="img"
-                sx={{ borderRadius: 2 }}
-                image={getAssetPath(
-                  `${ASSET_IMAGES}/pages/cherrydeck.jpeg`,
-                  "640x820"
-                )}
-                alt="About Us"
-              />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Button
-                disableRipple
-                variant="text"
-                sx={{
-                  px: 0,
-                  ml: "-5px",
-                  mt: { md: 2 },
-                  mb: 2,
-                  textTransform: "none",
-                  color: "text.primary",
+        <Navbar />
+        <br />
+        <Div style={{ marginRight: 6 + "em", marginLeft: 6 + "em" }}>
+          <JumboCardQuick
+            title={
+              <Typography variant="h6" color={"text.secondary"}></Typography>
+            }
+            subheader={
+              <Typography component={"h2"} variant="h1">
+                Welcome to the first Smart Apartments in San Jose, California
+              </Typography>
+            }
+            wrapperSx={{ pt: 0 }}
+          >
+            <Grid container spacing={3.75}>
+              <Grid item xs={12} md={6}>
+                <CardMedia
+                  component="img"
+                  sx={{ borderRadius: 2 }}
+                  image={getAssetPath(
+                    `${ASSET_IMAGES}/pages/cherrydeck.jpeg`,
+                    "640x820"
+                  )}
+                  alt="About Us"
+                />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Button
+                  disableRipple
+                  variant="text"
+                  sx={{
+                    px: 0,
+                    ml: "-5px",
+                    mt: { md: 2 },
+                    mb: 2,
+                    textTransform: "none",
+                    color: "text.primary",
 
-                  "&:hover": {
-                    bgcolor: "transparent",
-                  },
-                }}
-              >
-                <PlayCircleIcon sx={{ fontSize: "3rem", mr: 1 }} /> Watch Intro
-              </Button>
-              <Typography variant="h2" color="text.primary">
-                Our Mission
-              </Typography>
-              <Typography variant="body1" color="text.secondary" mb={3}>
-                Welcome to the future! SAC apartments are the first in San Jose
-                to offer the Smart Home technology for all the apartments. Our
-                state-of-art facility provides yousecurity, comfort and
-                convenience, by our web application on your smartphone or other
-                networked device. You can control your home appliances from
-                anywhere. No more hassles in forgetting whether you turned on
-                our oven or not. We provide you peace of mind, allowing them to
-                monitor your homes remotely.
-              </Typography>
+                    "&:hover": {
+                      bgcolor: "transparent",
+                    },
+                  }}
+                >
+                  <PlayCircleIcon sx={{ fontSize: "3rem", mr: 1 }} /> Watch
+                  Intro
+                </Button>
+                <Typography variant="h2" color="text.primary">
+                  Our Mission
+                </Typography>
+                <Typography variant="body1" color="text.secondary" mb={3}>
+                  Welcome to the future! SAC apartments are the first in San
+                  Jose to offer the Smart Home technology for all the
+                  apartments. Our state-of-art facility provides yousecurity,
+                  comfort and convenience, by our web application on your
+                  smartphone or other networked device. You can control your
+                  home appliances from anywhere. No more hassles in forgetting
+                  whether you turned on our oven or not. We provide you peace of
+                  mind, allowing them to monitor your homes remotely.
+                </Typography>
+              </Grid>
             </Grid>
-          </Grid>
-        </JumboCardQuick>
+          </JumboCardQuick>
+        </Div>
       </React.Fragment>
       <br /> <br />
+      <Div style={{ marginRight: 6 + "em", marginLeft: 6 + "em" }}>
       <JumboCardQuick title={"Photos"} noWrapper>
         <CardContent sx={{ py: 0 }}>
           <ImageList
@@ -153,6 +152,7 @@ const HomePage = () => {
           </ImageList>
         </CardContent>
       </JumboCardQuick>
+      </Div>
     </Div>
   );
 };

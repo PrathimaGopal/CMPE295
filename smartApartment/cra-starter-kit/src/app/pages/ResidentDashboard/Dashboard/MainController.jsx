@@ -5,7 +5,7 @@ import {
   WbSunnyRounded,
   FireplaceRounded,
 } from "@mui/icons-material";
-import HoverInfoCard from "./HoverInfoCard";
+import InfoCard from "./InfoCard/InfoCard";
 
 const MainController = (props) => {
   const getIcon = () => {
@@ -19,14 +19,7 @@ const MainController = (props) => {
       return <FireplaceRounded style={{ color: "#ffffff" }} />;
     }
   };
-  return (
-    <HoverInfoCard
-      icon={getIcon()}
-      backgroundColor={props.color}
-      title={props.title}
-      subTitle={props.subTitle}
-    />
-  );
+  return <InfoCard icon={getIcon()} title={props.title} image={props.image}/>;
 };
 
 export default MainController;

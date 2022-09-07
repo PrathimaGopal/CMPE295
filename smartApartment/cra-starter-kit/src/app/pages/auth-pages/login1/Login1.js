@@ -9,12 +9,13 @@ import {
 import CardMedia from "@mui/material/CardMedia";
 import Link from "@mui/material/Link";
 import { alpha } from "@mui/material/styles";
+import { TextField } from "@mui/material";
 import { auth } from "@jumbo/services/auth/firebase/firebase";
 import * as yup from "yup";
-import { Form, Formik } from "formik";
 import { useAuthSignInWithEmailAndPassword } from "@react-query-firebase/auth";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Div from "@jumbo/shared/Div";
 import JumboTextField from "@jumbo/components/JumboFormik/JumboTextField";
 import { useJumboApp } from "@jumbo/hooks";
@@ -32,22 +33,46 @@ const validationSchema = yup.object({
 const Login1 = () => {
   const navigate = useNavigate();
   const { setActiveLayout } = useJumboApp();
+  const [emailInput, setEmailInput] = useState("");
+  const [passwordInput, setPasswordInput] = useState("");
+  const [userType, setUserType] = useState("");
+
+  const handleEmailChange = (e) => {
+    setEmailInput(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPasswordInput(e.target.value);
+  };
 
   React.useEffect(() => {
     setActiveLayout(LAYOUT_NAMES.SOLO_PAGE);
   });
 
-  const mutation = useAuthSignInWithEmailAndPassword(auth, {
-    onError(error) {
-      console.log(error);
-    },
-    onSuccess(data) {
-      navigate("/", { replace: true });
-    },
-  });
-
-  const onSignIn = (email, password) => {
-    mutation.mutate({ email, password });
+  const onSignIn = (e) => {
+    // setEmailInput(email.target.value);
+    // setPasswordInput(password.target.value);
+    setUserType("resident");
+    let hardcodedCred = {
+      email: "abc@abc.com",
+      password: "123",
+      userType: "resident",
+    };
+    if (
+      emailInput === hardcodedCred.email &&
+      passwordInput === hardcodedCred.password &&
+      userType === hardcodedCred.userType
+    ) {
+      //combination is good. Log them in.
+      //this token can be anything. You can use random.org to generate a random string;
+      console.log("true");
+      navigate("/resident/dashboard", { replace: true });
+    } else {
+      //bad combination
+      console.log("Incorrect values");
+      alert("Enter valid credentials");
+    }
+    e.preventDefault();
   };
 
   return (
@@ -100,58 +125,49 @@ const Login1 = () => {
           </Div>
         </Div>
         <CardContent sx={{ pt: 0 }}>
-          <Formik
-            validateOnChange={true}
-            initialValues={{
-              email: "demo@example.com",
-              password: "123456",
-            }}
-            validationSchema={validationSchema}
-            onSubmit={(data, { setSubmitting }) => {
-              setSubmitting(true);
-              onSignIn(data.email, data.password);
-              setSubmitting(false);
-            }}
+          <form
+            style={{ textAlign: "left" }}
+            noValidate
+            autoComplete="off"
+            onSubmit={onSignIn}
           >
-            {({ isSubmitting }) => (
-              <Form style={{ textAlign: "left" }} noValidate autoComplete="off">
-                {mutation.isError && <p>{mutation.error.message}</p>}
-                <br /> <br />
-                <Div sx={{ mb: 3, mt: 1 }}>
-                  <JumboTextField fullWidth name="email" label="Email" />
-                </Div>
-                <Div sx={{ mb: 2, mt: 1 }}>
-                  <JumboTextField
-                    fullWidth
-                    name="password"
-                    label="Password"
-                    type="password"
-                  />
-                </Div>
-                <Typography textAlign={"right"} variant={"body1"}>
-                  <Link underline="none" href="#">
-                    Forgot your password?
-                  </Link>
-                </Typography>
-                <Div sx={{ mb: 1 }}>
-                  <FormControlLabel
-                    control={<Checkbox />}
-                    label="Remember me"
-                  />
-                </Div>
-                <LoadingButton
-                  fullWidth
-                  type="submit"
-                  variant="contained"
-                  size="large"
-                  sx={{ mb: 3 }}
-                  loading={isSubmitting || mutation.isLoading}
-                >
-                  Login
-                </LoadingButton>
-              </Form>
-            )}
-          </Formik>
+            <br /> <br />
+            <Div sx={{ mb: 3, mt: 1 }}>
+              <TextField
+                fullWidth
+                name="email"
+                label="Email"
+                placeholder="abc@gmail.com"
+                onChange={handleEmailChange}
+              />
+            </Div>
+            <Div sx={{ mb: 2, mt: 1 }}>
+              <TextField
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                onChange={handlePasswordChange}
+              />
+            </Div>
+            <Typography textAlign={"right"} variant={"body1"}>
+              <Link underline="none" href="#">
+                Forgot your password?
+              </Link>
+            </Typography>
+            <Div sx={{ mb: 1 }}>
+              <FormControlLabel control={<Checkbox />} label="Remember me" />
+            </Div>
+            <LoadingButton
+              fullWidth
+              type="submit"
+              variant="contained"
+              size="large"
+              sx={{ mb: 3 }}
+            >
+              Login
+            </LoadingButton>
+          </form>
         </CardContent>
       </Card>
     </Div>

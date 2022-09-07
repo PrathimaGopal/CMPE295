@@ -18,11 +18,9 @@ const Lights = (props) => {
           )}
         />
         <Div sx={{ ml: 2, flex: 1 }}>
-          <Typography color={"common.white"} variant={"h2"} mb={0.5}>
-            {props.label}
-          </Typography>
-          <Typography color={"common.white"} variant={"h5"} mb={0}>
-            <Switch />
+          <Typography color={"common.white"} variant={"h3"} mb={0.5}>
+            {props.label} &nbsp;
+              <Switch />
           </Typography>
         </Div>
       </Div>

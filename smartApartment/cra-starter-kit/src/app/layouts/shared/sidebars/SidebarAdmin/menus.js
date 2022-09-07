@@ -1,5 +1,5 @@
 import React from "react";
-import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined';
+import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
 
 const menus = [
   {
@@ -7,31 +7,37 @@ const menus = [
     type: "section",
     children: [
       {
-        uri: "/resident/dashboard",
+        uri: "/admin/dashboard",
         label: "Dashboard",
         type: "nav-item",
         icon: <ListAltOutlinedIcon sx={{ fontSize: 20 }} />,
       },
       {
-        uri: "/resident/serviceRequest",
-        label: "Service Request",
-        type: "nav-item",
-        icon: <ListAltOutlinedIcon sx={{ fontSize: 20 }} />,
-      },
-      {
-        uri: "/resident/messages",
+        uri: "/admin/messages",
         label: "Messages",
         type: "nav-item",
         icon: <ListAltOutlinedIcon sx={{ fontSize: 20 }} />,
       },
       {
-        uri: "/resident/settings",
+        uri: "/admin/addNewUser",
+        label: "Add New User",
+        type: "nav-item",
+        icon: <ListAltOutlinedIcon sx={{ fontSize: 20 }} />,
+      },
+      {
+        uri: "/admin/removeResident",
+        label: "Remove Resident",
+        type: "nav-item",
+        icon: <ListAltOutlinedIcon sx={{ fontSize: 20 }} />,
+      },
+      {
+        uri: "/admin/settings",
         label: "Settings",
         type: "nav-item",
         icon: <ListAltOutlinedIcon sx={{ fontSize: 20 }} />,
       },
       {
-        uri: "/resident/Logout",
+        uri: "/admin/logout",
         label: "Logout",
         type: "nav-item",
         icon: <ListAltOutlinedIcon sx={{ fontSize: 20 }} />,

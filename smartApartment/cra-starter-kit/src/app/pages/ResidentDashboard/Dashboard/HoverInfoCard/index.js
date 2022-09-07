@@ -73,7 +73,7 @@ const HoverInfoCard = ({
   const classes = useStyles();
 
   return (
-    <Card {...rest} className={classes.cardRoot}>
+    <Card {...rest} className={classes.cardRoot} >
       <Box className={classes.iconWrapper}>
         <Box className={classes.iconThumb} style={{ backgroundColor }}>
           {icon}
@@ -109,9 +109,6 @@ const HoverInfoCard = ({
       </Box>
       <Box className={classes.hoverContent}>
         <Switch />
-        {/* <NavLink to={linkOnArrow || ''}>
-          <ArrowForwardIcon />
-        </NavLink> */}
       </Box>
     </Card>
   );

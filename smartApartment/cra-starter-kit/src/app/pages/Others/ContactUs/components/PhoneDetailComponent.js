@@ -25,7 +25,7 @@ const PhoneDetailComponent = () => {
                 </Avatar>
                 <Typography variant={"h5"}>Phone No.</Typography>
                 <Typography variant={"body1"} color={"text.secondary"}>
-                    +1 (480) 480 888 <br/>01 (800) 480 889
+                    +1 (480) 480 888 <br/>+1 (480) 480 889
                 </Typography>
             </CardContent>
         </Card>

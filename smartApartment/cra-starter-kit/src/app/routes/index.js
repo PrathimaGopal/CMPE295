@@ -7,6 +7,8 @@ import ContactUs from "app/pages/Others/ContactUs";
 import AboutUs from "app/pages/Others/AboutUs";
 import ServiceRequest from "app/pages/ResidentDashboard/ServiceRequest";
 import ResidentDashboard from "app/pages/ResidentDashboard/Dashboard";
+import AdminDashboard from "app/pages/AdminDashboard/Dashboard/AdminDashboard";
+import AddNewUser from "app/pages/AdminDashboard/Add New User";
 
 const routes = [
   {
@@ -40,6 +42,14 @@ const routes = [
   {
     path: "/resident/dashboard",
     element: <ResidentDashboard />,
+  },
+  {
+    path: "/admin/dashboard",
+    element: <AdminDashboard />,
+  },
+  {
+    path: "/admin/addNewUser",
+    element: <AddNewUser />,
   },
 ];
 
