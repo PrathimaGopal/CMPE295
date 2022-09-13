@@ -9,6 +9,8 @@ import ServiceRequest from "app/pages/ResidentDashboard/ServiceRequest";
 import ResidentDashboard from "app/pages/ResidentDashboard/Dashboard";
 import AdminDashboard from "app/pages/AdminDashboard/Dashboard/AdminDashboard";
 import AddNewUser from "app/pages/AdminDashboard/Add New User";
+import SecurityKey from "app/pages/auth-pages/security-key/SecurityKey";
+import RemoveUser from "app/pages/AdminDashboard/Remove User";
 
 const routes = [
   {
@@ -50,6 +52,14 @@ const routes = [
   {
     path: "/admin/addNewUser",
     element: <AddNewUser />,
+  },
+  {
+    path: "/admin/removeUser",
+    element: <RemoveUser />,
+  },
+  {
+    path: "/admin/securityKey",
+    element: <SecurityKey />,
   },
 ];
 

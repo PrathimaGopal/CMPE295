@@ -25,8 +25,8 @@ const menus = [
         icon: <ListAltOutlinedIcon sx={{ fontSize: 20 }} />,
       },
       {
-        uri: "/admin/removeResident",
-        label: "Remove Resident",
+        uri: "/admin/removeUser",
+        label: "Remove User",
         type: "nav-item",
         icon: <ListAltOutlinedIcon sx={{ fontSize: 20 }} />,
       },

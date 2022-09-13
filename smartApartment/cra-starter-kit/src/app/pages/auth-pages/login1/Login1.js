@@ -12,7 +12,7 @@ import { alpha } from "@mui/material/styles";
 import { TextField } from "@mui/material";
 import { auth } from "@jumbo/services/auth/firebase/firebase";
 import * as yup from "yup";
-import { useAuthSignInWithEmailAndPassword } from "@react-query-firebase/auth";
+import FormControl from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -21,6 +21,9 @@ import JumboTextField from "@jumbo/components/JumboFormik/JumboTextField";
 import { useJumboApp } from "@jumbo/hooks";
 import { LAYOUT_NAMES } from "../../../layouts/layouts";
 import { ASSET_IMAGES } from "../../../utils/constants/paths";
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormLabel from '@mui/material/FormLabel';
 
 const validationSchema = yup.object({
   email: yup
@@ -36,6 +39,12 @@ const Login1 = () => {
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [userType, setUserType] = useState("");
+  const [radio, setRadio] = useState("Resident");
+
+  function onChangeValue(event) {
+    setRadio(event.target.value);
+    console.log(event.target.value);
+  }
 
   const handleEmailChange = (e) => {
     setEmailInput(e.target.value);
@@ -125,13 +134,30 @@ const Login1 = () => {
           </Div>
         </Div>
         <CardContent sx={{ pt: 0 }}>
+          <br />
           <form
             style={{ textAlign: "left" }}
             noValidate
             autoComplete="off"
             onSubmit={onSignIn}
           >
-            <br /> <br />
+            <div style={{ textAlign: "center" }} onChange={onChangeValue}>
+              <input
+                type="radio"
+                value="Resident"
+                name="radio"
+                checked={radio === "Resident"}
+              />{" "}
+              Resident &nbsp; &nbsp; 
+              <input
+                type="radio"
+                value="Admin"
+                name="radio"
+                checked={radio === "Admin"}
+              />{" "}
+              Admin
+            </div>
+            <br />
             <Div sx={{ mb: 3, mt: 1 }}>
               <TextField
                 fullWidth

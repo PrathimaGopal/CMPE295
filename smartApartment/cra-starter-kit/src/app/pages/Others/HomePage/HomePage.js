@@ -87,7 +87,7 @@ const HomePage = () => {
                   sx={{ borderRadius: 2 }}
                   image={getAssetPath(
                     `${ASSET_IMAGES}/pages/cherrydeck.jpeg`,
-                    "640x820"
+                    "320x820"
                   )}
                   alt="About Us"
                 />
