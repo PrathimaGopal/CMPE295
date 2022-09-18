@@ -1,5 +1,9 @@
 import React from "react";
-import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined';
+import SettingsIcon from "@mui/icons-material/Settings";
+import MessageIcon from "@mui/icons-material/Message";
+import LogoutIcon from "@mui/icons-material/Logout";
+import BuildIcon from "@mui/icons-material/Build";
+import DashboardIcon from '@mui/icons-material/Dashboard';
 
 const menus = [
   {
@@ -10,31 +14,31 @@ const menus = [
         uri: "/resident/dashboard",
         label: "Dashboard",
         type: "nav-item",
-        icon: <ListAltOutlinedIcon sx={{ fontSize: 20 }} />,
+        icon: <DashboardIcon sx={{ fontSize: 20 }} />,
       },
       {
         uri: "/resident/serviceRequest",
         label: "Service Request",
         type: "nav-item",
-        icon: <ListAltOutlinedIcon sx={{ fontSize: 20 }} />,
+        icon: <BuildIcon sx={{ fontSize: 20 }} />,
       },
       {
         uri: "/resident/messages",
         label: "Messages",
         type: "nav-item",
-        icon: <ListAltOutlinedIcon sx={{ fontSize: 20 }} />,
+        icon: <MessageIcon sx={{ fontSize: 20 }} />,
       },
       {
         uri: "/resident/settings",
         label: "Settings",
         type: "nav-item",
-        icon: <ListAltOutlinedIcon sx={{ fontSize: 20 }} />,
+        icon: <SettingsIcon sx={{ fontSize: 20 }} />,
       },
       {
         uri: "/resident/Logout",
         label: "Logout",
         type: "nav-item",
-        icon: <ListAltOutlinedIcon sx={{ fontSize: 20 }} />,
+        icon: <LogoutIcon sx={{ fontSize: 20 }} />,
       },
     ],
   },

@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import {
   Grid,
   TextField,
-  FormControlLabel,
-  FormControl,
-  RadioGroup,
-  Radio,
   Select,
   MenuItem,
   InputLabel,
@@ -26,8 +22,6 @@ import { LAYOUT_NAMES } from "app/layouts/layouts";
 const defaultValues = {
   firstname: "",
   lastname: "",
-  dob: "",
-  gender: "",
   email: "",
   ssn: "",
   mobile: "",
@@ -72,7 +66,6 @@ const RemoveUser = () => {
 
   return (
     <Card style={cardStyle}>
-      <form onSubmit={handleSubmit}>
         <Grid container>
           <Box
             component="form"
@@ -82,6 +75,7 @@ const RemoveUser = () => {
             }}
             noValidate
             autoComplete="off"
+            onSubmit={handleSubmit}
           >
             <Typography variant={"h3"} mb={0.5}>
               <br />
@@ -110,7 +104,7 @@ const RemoveUser = () => {
             </Select>
             <br />
             <TextField
-              id="outlined1"
+              id="firstname"
               label="First Name"
               name="firstname"
               variant="outlined"
@@ -121,7 +115,7 @@ const RemoveUser = () => {
             />
             <br />
             <TextField
-              id="outlined"
+              id="lastname"
               label="Last Name"
               name="lastname"
               variant="outlined"
@@ -132,7 +126,7 @@ const RemoveUser = () => {
             />
             <br />
             <TextField
-              id="outlined-basic"
+              id="email"
               label="E-mail"
               variant="outlined"
               type="text"
@@ -144,7 +138,7 @@ const RemoveUser = () => {
             />
             <br />
             <TextField
-              id="outlined-basic"
+              id="mobile"
               label="Mobile Number"
               variant="outlined"
               type="text"
@@ -177,10 +171,13 @@ const RemoveUser = () => {
               onClose={() => setOpen(false)}
               aria-describedby="alert-dialog-slide-description"
             >
-              <DialogTitle>{"Are you sture to delete the account?"}</DialogTitle>
+              <DialogTitle>
+                {"Are you sture to delete the account?"}
+              </DialogTitle>
               <DialogContent>
                 <DialogContentText id="alert-dialog-slide-description">
-                  Once you click Submit, the resident will no longer be allowed to enter the apartment.
+                  Once you click Submit, the resident will no longer be allowed
+                  to enter the apartment.
                 </DialogContentText>
               </DialogContent>
               <DialogActions>
@@ -191,7 +188,6 @@ const RemoveUser = () => {
           </Box>
           <br />
         </Grid>
-      </form>
     </Card>
   );
 };

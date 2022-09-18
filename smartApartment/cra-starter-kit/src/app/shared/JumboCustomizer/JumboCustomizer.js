@@ -8,7 +8,6 @@ import Stack from "@mui/material/Stack";
 import HeaderOptions from "./components/HeaderOptions";
 import SidebarOptions from "./components/SidebarOptions";
 import FooterOptions from "./components/FooterOptions";
-import LocalizationOptions from "./components/LocalizationOptions";
 import Typography from "@mui/material/Typography";
 import {IconButton} from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
@@ -54,7 +53,6 @@ const JumboCustomizer = () => {
                     <HeaderOptions/>
                     <SidebarOptions/>
                     <FooterOptions/>
-                    <LocalizationOptions/>
                 </Stack>
             </JumboScrollbar>
         </Drawer>

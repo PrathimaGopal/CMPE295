@@ -11,6 +11,8 @@ import AdminDashboard from "app/pages/AdminDashboard/Dashboard/AdminDashboard";
 import AddNewUser from "app/pages/AdminDashboard/Add New User";
 import SecurityKey from "app/pages/auth-pages/security-key/SecurityKey";
 import RemoveUser from "app/pages/AdminDashboard/Remove User";
+import AdminSettings from "app/pages/AdminDashboard/AdminSettings";
+import ResidentSettings from "app/pages/ResidentDashboard/ResidentSettings";
 
 const routes = [
   {
@@ -46,6 +48,10 @@ const routes = [
     element: <ResidentDashboard />,
   },
   {
+    path: "/resident/settings",
+    element: <ResidentSettings />,
+  },
+  {
     path: "/admin/dashboard",
     element: <AdminDashboard />,
   },
@@ -60,6 +66,10 @@ const routes = [
   {
     path: "/admin/securityKey",
     element: <SecurityKey />,
+  },
+  {
+    path: "/admin/settings",
+    element: <AdminSettings />,
   },
 ];
 
