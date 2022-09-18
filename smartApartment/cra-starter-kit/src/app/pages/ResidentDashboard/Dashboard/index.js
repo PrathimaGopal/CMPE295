@@ -2,20 +2,11 @@ import React from "react";
 import MainController from "./MainController";
 import { Grid } from "@mui/material";
 import SecurityCamera from "./SecurityCamera";
-import GridContainer from "./GridContainer";
 import Lights from "./Lights";
 import TemperatureController from "./TemperatureController";
 import SalesOverview from "app/shared/metrics/SalesOverview";
-import Documents1 from "app/shared/widgets/Documents";
-import Ideas1 from "app/shared/widgets/Ideas1";
-import UserOrders from "app/shared/metrics/UserOrders";
-import UserSummary from "app/shared/widgets/UserSummary";
-import PortfolioBalance from "app/shared/metrics/PortfolioBalance";
-import EarningExpenses from "app/shared/metrics/EarningExpenses";
 import TempHumidityGraph from "./TempHumidityGraph";
-import InfoCard from "./InfoCard/InfoCard";
-// import TemperatureController from "./TemperatureController";
-// import HumidityController from "./HumidityController";
+import HumidityController from "./HumidityController";
 // import TemperatureAnalytics from "./TemperatureAnalytics";
 
 export default function ResidentDashboard() {
@@ -24,7 +15,11 @@ export default function ResidentDashboard() {
       <Grid item xs={12} lg={3}>
         <Grid container spacing={3.75}>
           <Grid item xs={12} sm={6} lg={12}>
-            <MainController icon="door" title="Front Door" image="linear-gradient(135deg, #38B8F2, #843CF6)"/>
+            <MainController
+              icon="door"
+              title="Front Door"
+              image="linear-gradient(135deg, #38B8F2, #843CF6)"
+            />
           </Grid>
           <Grid item xs={12} sm={6} lg={12}>
             <MainController icon="kitchen" title="Fridge" />
@@ -45,22 +40,22 @@ export default function ResidentDashboard() {
         <SalesOverview />
       </Grid>
       <Grid item xs={12} sm={6} lg={3}>
-        <Lights icon="living" label="Living" color="#4DB2F5" />
+        <Lights icon="living" label="Living" color="#144e7a" />
       </Grid>
       <Grid item xs={12} sm={6} lg={3}>
-        <Lights icon="bed" label="Bedroom" color="#7ECC7E" />
+        <Lights icon="bed" label="Bedroom" color="#144e7a" />
       </Grid>
       <Grid item xs={12} sm={6} lg={3}>
-        <Lights icon="kitchen" label="Kitchen" color="#FFA74F" />
+        <Lights icon="kitchen" label="Kitchen" color="#144e7a" />
       </Grid>
       <Grid item xs={12} sm={6} lg={3}>
-        <Lights icon="bathroom" label="Bathroom" color="#D16472" />
+        <Lights icon="bathroom" label="Bathroom" color="#144e7a" />
       </Grid>
       <Grid item xs={12} lg={6}>
-        <PortfolioBalance />
+        <TemperatureController />
       </Grid>
       <Grid item xs={12} lg={6}>
-        <EarningExpenses />
+        <HumidityController />
       </Grid>
       <Grid item xs={12} lg={12}>
         <TempHumidityGraph />
