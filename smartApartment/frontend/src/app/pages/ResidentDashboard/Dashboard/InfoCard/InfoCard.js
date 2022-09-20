@@ -1,9 +1,8 @@
 import React from "react";
 import { Card, CardActions, CardContent, Typography } from "@mui/material";
 import Div from "@jumbo/shared/Div";
-import {Switch} from "@mui/material";
+import { Switch } from "@mui/material";
 const InfoCard = (props) => {
-
   return (
     <Card
       sx={{
@@ -36,11 +35,10 @@ const InfoCard = (props) => {
               alignItems: "center",
               justifyContent: "center",
             }}
-          >
-          </Div>
+          ></Div>
         </Div>
         <CardContent sx={{ p: 2.5, flex: 1, alignSelf: "center" }}>
-          <Typography variant={"h4"} color={"common.white"}>
+          <Typography variant={"h5"} color={"common.white"}>
             {props.title} <Switch />
           </Typography>
         </CardContent>
