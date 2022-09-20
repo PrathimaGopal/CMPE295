@@ -40,16 +40,40 @@ export default function ResidentDashboard() {
         <SalesOverview />
       </Grid>
       <Grid item xs={12} sm={6} lg={3}>
-        <Lights icon="living" label="Living" color="#144e7a" />
+        <Lights
+          icon="living"
+          label="Living"
+          deviceType="LivingRoomLight"
+          color="#144e7a"
+          dbValue={0}
+        />
       </Grid>
       <Grid item xs={12} sm={6} lg={3}>
-        <Lights icon="bed" label="Bedroom" color="#144e7a" />
+        <Lights
+          icon="bed"
+          label="Bedroom"
+          deviceType="BedroomLight"
+          color="#144e7a"
+          dbValue={0}
+        />
       </Grid>
       <Grid item xs={12} sm={6} lg={3}>
-        <Lights icon="kitchen" label="Kitchen" color="#144e7a" />
+        <Lights
+          icon="kitchen"
+          label="Kitchen"
+          deviceType="KitchenLight"
+          color="#144e7a"
+          dbValue={0}
+        />
       </Grid>
       <Grid item xs={12} sm={6} lg={3}>
-        <Lights icon="bathroom" label="Bathroom" color="#144e7a" />
+        <Lights
+          icon="bathroom"
+          label="Bath Room"
+          deviceType="BathroomLight"
+          color="#144e7a"
+          dbValue={0}
+        />
       </Grid>
       <Grid item xs={12} lg={6}>
         <TemperatureController />
