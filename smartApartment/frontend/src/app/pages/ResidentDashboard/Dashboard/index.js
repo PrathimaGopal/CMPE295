@@ -6,6 +6,7 @@ import Lights from "./Lights";
 import TemperatureController from "./TemperatureController";
 import SalesOverview from "app/shared/metrics/SalesOverview";
 import TempHumidityGraph from "./TempHumidityGraph";
+import TempTimeGraph from "./TempratureTimeGraph";
 import HumidityController from "./HumidityController";
 // import TemperatureAnalytics from "./TemperatureAnalytics";
 
@@ -83,6 +84,9 @@ export default function ResidentDashboard() {
       </Grid>
       <Grid item xs={12} lg={12}>
         <TempHumidityGraph />
+      </Grid>
+      <Grid item xs={12} lg={12}>
+        <TempTimeGraph />
       </Grid>
     </Grid>
   );
