@@ -21,7 +21,7 @@ const MainController = (props) => {
       return <FireplaceIcon style={{ color: "#ffffff" }} />;
     }
   };
-  return <InfoCard icon={getIcon()} title={props.title} image={props.image}/>;
+  return <InfoCard icon={getIcon()} title={props.title} image={props.image} deviceType={props.deviceType}/>;
 };
 
 export default MainController;

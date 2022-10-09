@@ -20,8 +20,6 @@ const defaultValues = {
 const cardStyle = {
   display: "block",
   transitionDuration: "0.3s",
-  width: "40vw",
-  height: "57vw",
   alignItems:"center",
   margin: "0px auto"
 };
@@ -213,6 +211,7 @@ const AddNewUser = () => {
           <br />
         </Grid>
       </form>
+      <br /> <br />
     </Card>
   );
 };
