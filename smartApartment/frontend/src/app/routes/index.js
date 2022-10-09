@@ -13,6 +13,7 @@ import SecurityKey from "app/pages/auth-pages/security-key/SecurityKey";
 import RemoveUser from "app/pages/AdminDashboard/Remove User";
 import AdminSettings from "app/pages/AdminDashboard/AdminSettings";
 import ResidentSettings from "app/pages/ResidentDashboard/ResidentSettings";
+import AdminMessages from "app/pages/AdminDashboard/AdminMessages";
 
 const routes = [
   {
@@ -70,6 +71,10 @@ const routes = [
   {
     path: "/admin/settings",
     element: <AdminSettings />,
+  },
+  {
+    path: "/admin/messages",
+    element: <AdminMessages />,
   },
 ];
 

@@ -1,11 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import JumboCardQuick from "@jumbo/components/JumboCardQuick";
 import { Box, Slider } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { Typography } from "@mui/material";
+import axios from "axios";
 
 const TemperatureController = () => {
-  const [value, setValue] = React.useState(23);
+  const [value, setValue] = useState(23);
+
+  useEffect(() => {
+    // Make API Call
+    axios.defaults.headers.common = {
+      "X-API-Key": "pX5ri8vYyw7B3zwQeuPuD2CXJTN1vQT967oeBqsJ",
+    };
+
+    axios({
+      url: `https://oziv0d75z4.execute-api.us-west-1.amazonaws.com/Apartment1_API_gateway`,
+      method: "post",
+      data: {
+        deviceType: "LivingRoomTemperature",
+        value: value,
+      },
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          console.log("Success", res.data);
+        }
+      })
+      .catch((err) => {
+        console.log("Error:", err);
+      });
+  });
+
   const temperatureMarks = [
     {
       value: 0,
@@ -51,16 +77,18 @@ const TemperatureController = () => {
     },
   });
 
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   const classes = useStyles({ value });
 
   return (
     <JumboCardQuick title={"Temperature Controller"}>
       <Box className={classes.root}>
-        <Typography id="discrete-slider-always" gutterBottom>
-          Temperature
-        </Typography>
+        <Typography id="discrete-slider-always" gutterBottom></Typography>
         <Slider
-          onChange={(e, newValue) => setValue(newValue)}
+          onChange={handleChange}
           defaultValue={20}
           getAriaValueText={valuetext}
           aria-labelledby="discrete-slider-always"
