@@ -2,13 +2,9 @@ import React, { useState } from "react";
 import {
   Grid,
   TextField,
-  Button,
-  Typography,
+  Button
 } from "@mui/material";
 import { Box } from "@mui/material";
-import { useJumboApp } from "@jumbo/hooks";
-import { Card } from "@mui/material";
-import { LAYOUT_NAMES } from "app/layouts/layouts";
 
 const defaultValues = {
   currentpassword: "",
@@ -16,20 +12,8 @@ const defaultValues = {
   newpassword2: "",
 };
 
-const cardStyle = {
-  display: "block",
-  transitionDuration: "0.3s",
-  alignItems: "center",
-  margin: "0px auto",
-};
 
-const ResidentSettings = () => {
-  const { setActiveLayout } = useJumboApp();
-
-  React.useEffect(() => {
-    setActiveLayout(LAYOUT_NAMES.VERTICAL_DEFAULT);
-  });
-
+const ChangeLoginPassword = () => {
   const [formValues, setFormValues] = useState(defaultValues);
 
   const handleInputChange = (e) => {
@@ -45,7 +29,6 @@ const ResidentSettings = () => {
   };
 
   return (
-    <Card style={cardStyle}>
         <Grid container>
           <Box
             component="form"
@@ -57,10 +40,6 @@ const ResidentSettings = () => {
             autoComplete="off"
             onSubmit={handleSubmit}
           >
-            <Typography variant={"h3"} mb={0.5}>
-              <br />
-              &nbsp; Enter details to change login password
-            </Typography>
             <br />
             <TextField
               id="current"
@@ -86,7 +65,7 @@ const ResidentSettings = () => {
             <br />
             <TextField
               id="new2"
-              label="New Password"
+              label="Confirm New Password"
               name="newpassword2"
               variant="outlined"
               type="password"
@@ -101,9 +80,6 @@ const ResidentSettings = () => {
           </Box>
           <br />
         </Grid>
-        <br /> <br />
-    </Card>
   );
 };
-
-export default ResidentSettings;
+export default ChangeLoginPassword;

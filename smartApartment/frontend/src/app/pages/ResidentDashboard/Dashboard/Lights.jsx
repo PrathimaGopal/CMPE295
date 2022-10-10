@@ -31,7 +31,7 @@ const Lights = (props) => {
     })
       .then((res) => {
         if (res.status === 200) {
-          console.log("Succes", res.data);
+          console.log("Success", res.data);
         }
       })
       .catch((err) => {

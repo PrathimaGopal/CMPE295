@@ -1,109 +1,111 @@
-import React, { useState } from "react";
-import {
-  Grid,
-  TextField,
-  Button,
-  Typography,
-} from "@mui/material";
-import { Box } from "@mui/material";
-import { useJumboApp } from "@jumbo/hooks";
-import { Card } from "@mui/material";
+import * as React from 'react';
+import SwipeableViews from 'react-swipeable-views';
+import {useTheme} from '@mui/material/styles';
+import AppBar from '@mui/material/AppBar';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import JumboCardQuick from "@jumbo/components/JumboCardQuick";
+import ChangeLoginPassword from './ChangeLoginPassword';
+import ChangeSecurityKey from './ChangeSecurityKey';
 import { LAYOUT_NAMES } from "app/layouts/layouts";
-
-const defaultValues = {
-  currentpassword: "",
-  newpassword1: "",
-  newpassword2: "",
-};
+import Div from "@jumbo/shared/Div";
+import { useJumboApp } from "@jumbo/hooks";
 
 const cardStyle = {
   display: "block",
   transitionDuration: "0.3s",
-  width: "40vw",
-  height: "29vw",
   alignItems: "center",
   margin: "0px auto",
 };
 
-const AdminSettings = () => {
-  const { setActiveLayout } = useJumboApp();
+const TabPanel = (props) => {
+    const {children, value, index, ...other} = props;
 
-  React.useEffect(() => {
-    setActiveLayout(LAYOUT_NAMES.VERTICAL_ADMIN);
-  });
-
-  const [formValues, setFormValues] = useState(defaultValues);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues({
-      ...formValues,
-      [name]: value,
-    });
-  };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(formValues);
-  };
-
-  return (
-    <Card style={cardStyle}>
-        <Grid container>
-          <Box
-            component="form"
-            sx={{
-              "& > :not(style)": { m: 1, width: "45ch" },
-              marginLeft: "100px",
-            }}
-            noValidate
-            autoComplete="off"
-            onSubmit={handleSubmit}
-          >
-            <Typography variant={"h3"} mb={0.5}>
-              <br />
-              &nbsp;&nbsp;&nbsp; Enter details to change security key
-            </Typography>
-            <br />
-            <TextField
-              id="current"
-              label="Current Password"
-              name="currentpassword"
-              variant="outlined"
-              type="password"
-              value={formValues.currentpassword}
-              onChange={handleInputChange}
-              required
-            />
-            <br />
-            <TextField
-              id="new1"
-              label="New Password"
-              name="newpassword1"
-              variant="outlined"
-              type="password"
-              value={formValues.newpassword1}
-              onChange={handleInputChange}
-              required
-            />
-            <br />
-            <TextField
-              id="new2"
-              label="New Password"
-              name="newpassword2"
-              variant="outlined"
-              type="password"
-              value={formValues.newpassword2}
-              onChange={handleInputChange}
-              required
-            />
-            <br /> <br />
-            <Button variant="contained" color="primary" type="submit">
-              Confirm changes
-            </Button>
-          </Box>
-          <br />
-        </Grid>
-    </Card>
-  );
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`full-width-tabpanel-${index}`}
+            aria-labelledby={`full-width-tab-${index}`}
+            {...other}
+        >
+            {value === index && (
+                <Div sx={{p: 3}}>
+                    <Typography>{children}</Typography>
+                </Div>
+            )}
+        </div>
+    );
 };
+
+const a11yProps = (index) => {
+    return {
+        id: `full-width-tab-${index}`,
+        'aria-controls': `full-width-tabpanel-${index}`,
+    };
+};
+
+const AdminSettings = () => {
+    const { setActiveLayout } = useJumboApp();
+
+    React.useEffect(() => {
+      setActiveLayout(LAYOUT_NAMES.VERTICAL_ADMIN);
+    });
+
+    const theme = useTheme();
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
+    const handleChangeIndex = (index) => {
+        setValue(index);
+    };
+
+    return (
+      <JumboCardQuick style={cardStyle}>
+        <Typography variant={"h3"} mb={0.5}>
+          &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; Select tab to change Security
+          Key or Login Password
+        </Typography>
+        <br /> <br />
+        <Div
+          sx={{
+            width: 650,
+            maxWidth: "100%",
+            alignItems: "center",
+          }}
+        >
+          <AppBar position="static">
+            <Tabs 
+              value={value}
+              onChange={handleChange}
+              indicatorColor="secondary"
+              textColor="inherit"
+              variant="fullWidth"
+              aria-label="full width tabs example"
+            >
+              <Tab label="Security Key" {...a11yProps(0)} />
+              <Tab label="Login Password" {...a11yProps(1)} />
+            </Tabs>
+          </AppBar>
+          <SwipeableViews
+            axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+            index={value}
+            onChangeIndex={handleChangeIndex}
+          >
+            <TabPanel value={value} index={0} dir={theme.direction}>
+              <ChangeSecurityKey />
+            </TabPanel>
+            <TabPanel value={value} index={1} dir={theme.direction}>
+              <ChangeLoginPassword />
+            </TabPanel>
+          </SwipeableViews>
+        </Div>
+      </JumboCardQuick>
+    );
+};
+
 export default AdminSettings;

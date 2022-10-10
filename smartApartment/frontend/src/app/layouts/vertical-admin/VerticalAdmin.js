@@ -49,11 +49,10 @@ const VerticalAdmin = ({ children }) => {
 
   return (
     <JumboLayout
-      header={<Header />}
       sidebar={<SidebarAdmin />}
       footer={<Footer />}
       headerSx={{
-        height: 80,
+        height: 0,
       }}
     >
       {children}
