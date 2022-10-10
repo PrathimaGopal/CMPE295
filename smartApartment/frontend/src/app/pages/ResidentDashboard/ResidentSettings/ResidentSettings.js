@@ -19,6 +19,8 @@ const defaultValues = {
 const cardStyle = {
   display: "block",
   transitionDuration: "0.3s",
+  width: "40vw",
+  height: "29vw",
   alignItems: "center",
   margin: "0px auto",
 };
@@ -101,7 +103,6 @@ const ResidentSettings = () => {
           </Box>
           <br />
         </Grid>
-        <br /> <br />
     </Card>
   );
 };

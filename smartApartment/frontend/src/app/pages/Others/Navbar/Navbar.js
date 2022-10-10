@@ -33,7 +33,7 @@ const Navbar = () => {
       <br />
       <Toolbar style={{ fontSize: 30 }}>
         SMART APARTMENTS
-        <Stack spacing={2} direction="row" style={{ marginLeft: 650 }}>
+        <Stack spacing={2} direction="row" style={{ marginLeft: 800 }}>
           <Button variant="text" style={{ color: "white" }} onClick={navigateHome}>
             Home
           </Button>

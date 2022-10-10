@@ -1,42 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Card, CardActions, CardContent, Typography } from "@mui/material";
 import Div from "@jumbo/shared/Div";
 import { Switch } from "@mui/material";
-import axios from "axios";
-
 const InfoCard = (props) => {
-  const [value, setValue] = useState(props.dbValue);
-
-  const _onChange = (event) => {
-    setValue(event.target.checked ? 1 : 0);
-    console.log(props.label, ":", event.target.checked);
-  };
-
-  useEffect(() => {
-    // Make API Call
-    axios.defaults.headers.common = {
-      "X-API-Key": "pX5ri8vYyw7B3zwQeuPuD2CXJTN1vQT967oeBqsJ",
-    };
-
-    axios({
-      url: `https://oziv0d75z4.execute-api.us-west-1.amazonaws.com/Apartment1_API_gateway`,
-      method: "post",
-      data: {
-        deviceType: props.deviceType,
-        value: value,
-      },
-    })
-      .then((res) => {
-        if (res.status === 200) {
-          console.log("Success", res.data);
-        }
-      })
-      .catch((err) => {
-        console.log("Error:", err);
-      });
-  }, [props.label, value]);
-
-
   return (
     <Card
       sx={{
@@ -73,7 +39,7 @@ const InfoCard = (props) => {
         </Div>
         <CardContent sx={{ p: 2.5, flex: 1, alignSelf: "center" }}>
           <Typography variant={"h5"} color={"common.white"}>
-            {props.title} <Switch checked={value} onChange={_onChange} />
+            {props.title} <Switch />
           </Typography>
         </CardContent>
       </CardActions>
