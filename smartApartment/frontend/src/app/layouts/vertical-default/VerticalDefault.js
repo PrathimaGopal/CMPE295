@@ -40,10 +40,11 @@ const VerticalDefault = ({children}) => {
 
     return (
         <JumboLayout
+            header={<Header/>}
             sidebar={<Sidebar/>}
             footer={<Footer/>}
             headerSx={{
-                height: 0,
+                height: 80,
             }}
         >
             {children}
