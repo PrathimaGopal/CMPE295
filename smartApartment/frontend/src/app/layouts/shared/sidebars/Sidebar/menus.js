@@ -23,12 +23,6 @@ const menus = [
         icon: <BuildIcon sx={{ fontSize: 20 }} />,
       },
       {
-        uri: "/resident/messages",
-        label: "Messages",
-        type: "nav-item",
-        icon: <MessageIcon sx={{ fontSize: 20 }} />,
-      },
-      {
         uri: "/resident/settings",
         label: "Settings",
         type: "nav-item",

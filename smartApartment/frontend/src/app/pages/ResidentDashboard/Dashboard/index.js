@@ -18,21 +18,34 @@ export default function ResidentDashboard() {
             <MainController
               icon="door"
               title="Front Door"
+              deviceType="FrontDoor"
               image="linear-gradient(135deg, #38B8F2, #843CF6)"
             />
           </Grid>
           <Grid item xs={12} sm={6} lg={12}>
-            <MainController icon="kitchen" title="Fridge" />
+            <MainController
+              icon="kitchen"
+              title="Fridge"
+              deviceType="KitchenFridge"
+            />
           </Grid>
         </Grid>
       </Grid>
       <Grid item xs={12} lg={3}>
         <Grid container spacing={3.75}>
           <Grid item xs={12} sm={6} lg={12}>
-            <MainController icon="light" title="Oven" />
+            <MainController
+              icon="light"
+              title="Oven"
+              deviceType="KitchenOven"
+            />
           </Grid>
           <Grid item xs={12} sm={6} lg={12}>
-            <MainController icon="fire" title="Stove" />
+            <MainController
+              icon="fire"
+              title="Stove"
+              deviceType="KitchenBurner"
+            />
           </Grid>
         </Grid>
       </Grid>
@@ -69,7 +82,7 @@ export default function ResidentDashboard() {
       <Grid item xs={12} sm={6} lg={3}>
         <Lights
           icon="bathroom"
-          label="Bath Room"
+          label="Bathroom"
           deviceType="BathroomLight"
           color="#144e7a"
           dbValue={0}
