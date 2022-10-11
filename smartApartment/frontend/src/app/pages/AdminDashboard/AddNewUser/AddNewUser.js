@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid, TextField, FormControlLabel, FormControl, RadioGroup, Radio, Select, MenuItem, InputLabel , Button, FormLabel, Typography } from "@mui/material";
 import { Box } from "@mui/material"; 
 import { useJumboApp } from "@jumbo/hooks";
 import { Card } from "@mui/material";
 import { LAYOUT_NAMES } from "app/layouts/layouts";
+import axios from "axios";
 
 const defaultValues = {
   firstname: "",
@@ -14,6 +15,7 @@ const defaultValues = {
   ssn: "",
   mobile: "",
   aptno: "",
+  rent: "",
   leaseExpiry:"",
 };
 
@@ -42,8 +44,10 @@ const AddNewUser = () => {
     });
   };
   const handleSubmit = (event) => {
+    console.log("form values are",formValues);
     event.preventDefault();
-    console.log(formValues);
+    axios.post('https://j4ltvhdp18.execute-api.us-west-1.amazonaws.com/prod/user',formValues)
+    alert("user is added");
   };
 
   return (
@@ -159,6 +163,21 @@ const AddNewUser = () => {
             />
             <br />
             <TextField
+              id="rent"
+              name="rent"
+              label="Rent"
+              type="text"
+              placeholder="000$"
+              sx={{ width: 220 }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              value={formValues.rent}
+              onChange={handleInputChange}
+              required
+            />
+            <br />
+            <TextField
               id="outlined-basic"
               label="SSN"
               variant="outlined"
@@ -191,6 +210,7 @@ const AddNewUser = () => {
               <MenuItem value={10}>10</MenuItem>
             </Select>
             <br /> 
+            
             <TextField
               id="date"
               name="leaseExpiry"
@@ -206,7 +226,7 @@ const AddNewUser = () => {
               required
             />
             <br /> <br />
-            <Button variant="contained" color="primary" type="submit">
+            <Button variant="contained" color="primary" type="submit" onClick={handleSubmit}>
               Submit
             </Button>
           </Box>

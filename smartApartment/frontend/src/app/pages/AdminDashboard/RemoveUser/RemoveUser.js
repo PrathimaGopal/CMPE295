@@ -18,6 +18,8 @@ import { Box } from "@mui/material";
 import { useJumboApp } from "@jumbo/hooks";
 import { Card } from "@mui/material";
 import { LAYOUT_NAMES } from "app/layouts/layouts";
+import axios from "axios";
+
 
 const defaultValues = {
   firstname: "",
@@ -57,7 +59,8 @@ const RemoveUser = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formValues);
+    axios.post('https://j4ltvhdp18.execute-api.us-west-1.amazonaws.com/prod/user',formValues)
+    alert("user is deleted");
   };
 
   const Transition = React.forwardRef((props, ref) => {
