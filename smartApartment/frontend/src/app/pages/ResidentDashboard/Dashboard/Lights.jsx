@@ -52,7 +52,12 @@ const Lights = (props) => {
         <Div sx={{ ml: 2, flex: 1 }}>
           <Typography color={"common.white"} variant={"h5"} mb={0.5}>
             {props.label} &nbsp;
-            <Switch checked={value} onChange={_onChange} />
+            <Switch
+              checked={value}
+              onChange={_onChange}
+              defaultChecked
+              color="warning"
+            />
           </Typography>
         </Div>
       </Div>

@@ -1,6 +1,5 @@
 import React from "react";
 import JumboLayout from "@jumbo/components/JumboLayout";
-import Header from "../shared/headers/Header";
 import SidebarAdmin from "../shared/sidebars/SidebarAdmin";
 import Footer from "../shared/footers/Footer";
 import useJumboLayout from "@jumbo/hooks/useJumboLayout";

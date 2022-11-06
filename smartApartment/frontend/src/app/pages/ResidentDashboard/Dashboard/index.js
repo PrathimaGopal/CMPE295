@@ -4,7 +4,6 @@ import { Grid } from "@mui/material";
 import SecurityCamera from "./SecurityCamera";
 import Lights from "./Lights";
 import TemperatureController from "./TemperatureController";
-import SalesOverview from "app/shared/metrics/SalesOverview";
 import TempHumidityGraph from "./TempHumidityGraph";
 import TempTimeGraph from "./TempratureTimeGraph";
 import HumidityController from "./HumidityController";
@@ -51,7 +50,7 @@ export default function ResidentDashboard() {
         </Grid>
       </Grid>
       <Grid item xs={12} lg={6}>
-        <SalesOverview />
+        <SecurityCamera />
       </Grid>
       <Grid item xs={12} sm={6} lg={3}>
         <Lights
@@ -77,7 +76,7 @@ export default function ResidentDashboard() {
           label="Kitchen"
           deviceType="KitchenLight"
           color="#144e7a"
-          dbValue={0}
+          dbValue={1}
         />
       </Grid>
       <Grid item xs={12} sm={6} lg={3}>
@@ -86,14 +85,24 @@ export default function ResidentDashboard() {
           label="Bathroom"
           deviceType="BathroomLight"
           color="#144e7a"
-          dbValue={0}
+          dbValue={1}
         />
       </Grid>
       <Grid item xs={12} lg={6}>
-        <TemperatureController />
+        <TemperatureController
+          dbValue={1}
+          deviceType="TemperatureController"
+          label="TemperatureController"
+          tempValue={32}
+        />
       </Grid>
       <Grid item xs={12} lg={6}>
-        <HumidityController />
+        <HumidityController
+          dbValue={1}
+          deviceType="HumidityController"
+          label="TemperatureController"
+          humidityValue={92}
+        />
       </Grid>
       <Grid item xs={12} lg={12}>
         <TempHumidityGraph />

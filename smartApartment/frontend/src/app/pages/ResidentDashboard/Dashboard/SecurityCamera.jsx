@@ -10,7 +10,7 @@ const SecurityCamera = () => {
       <CardHeader title={ "Security Camera" } />
         <div style={{ display: 'flex' }}>
         <div style={{ paddingLeft: '80px' }}>
-          <ReactPlayer controls width="135%" height="110%" url="https://www.youtube.com/watch?v=4i_GFrlaStQ" br/>
+          <ReactPlayer controls width="140%" height="90%" url="https://www.youtube.com/watch?v=4i_GFrlaStQ" br/>
           <br /> <br />
         </div>
         </div>

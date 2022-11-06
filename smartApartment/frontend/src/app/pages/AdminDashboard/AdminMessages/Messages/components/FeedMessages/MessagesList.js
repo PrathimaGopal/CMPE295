@@ -1,19 +1,17 @@
 import React from 'react';
 import List from "@mui/material/List";
-import Button from "@mui/material/Button";
+import Div from '@jumbo/shared/Div';
+import { Typography } from '@mui/material';
 import FeedMessage from "./FeedMessage";
-import ListHeader from "../ListHeader";
 
 const MessagesList = ({title, count, notifications, noHeader}) => {
     return (
         <React.Fragment>
             {
                 !noHeader &&
-                <ListHeader
-                    title="MESSAGES"
-                    count={count}
-                    action={<Button variant="link">SEE ALL</Button>}
-                />
+                <Div className={"d-flex align-items-center justify-content-between px-4 pt-4"}>
+                    <Typography variant={"h4"} color={"text.secondary"}>{count} {title}</Typography>
+                </Div>               
             }
             <List disablePadding>
                 {
@@ -27,3 +25,10 @@ const MessagesList = ({title, count, notifications, noHeader}) => {
 };
 
 export default MessagesList;
+
+/*
+<ListHeader
+                    title="MESSAGES"
+                    count={count}
+                    action={<Button variant="link">SEE ALL</Button>}
+                /> */
