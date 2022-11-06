@@ -49,8 +49,6 @@ const JumboCustomizer = () => {
             <JumboScrollbar autoHide autoHideDuration={200} autoHideTimeout={500}>
                 <Stack spacing={3} sx={{px: 3, py: 2.5}}>
                     <LayoutOptions/>
-                    <MainThemeOptions/>
-                    <HeaderOptions/>
                     <SidebarOptions/>
                     <FooterOptions/>
                 </Stack>

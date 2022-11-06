@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import JumboCardQuick from "@jumbo/components/JumboCardQuick";
-import HumidityControlSlider from "./HumidityControlSlider";
-import { Switch, Typography } from "@mui/material";
+import Div from "@jumbo/shared/Div";
+import { Typography } from "@mui/material";
+import { Switch } from "@mui/material";
+import ApartmentIcon from "@mui/icons-material/Apartment";
 import axios from "axios";
 
-const TemperatureController = (props) => {
-  const [value, setValue] = useState(props.dbValue);
+const PublicUtility = (props) => {
+  const [value, setValue] = useState(0);
+
   const _onChange = (event) => {
     setValue(event.target.checked ? 1 : 0);
     console.log(props.label, ":", event.target.checked);
@@ -36,18 +39,19 @@ const TemperatureController = (props) => {
   }, [props.label, value]);
 
   return (
-    <JumboCardQuick>
-      <Typography variant="h4" align="center">
-        Humidity Controller &nbsp;&nbsp;
-        <Switch checked={value} onChange={_onChange} defaultChecked />
-      </Typography>
-      <br />
-      <HumidityControlSlider
-        sliderEnable={value === 1 ? false : true}
-        humidityValue={props.humidityValue}
-      />
+    <JumboCardQuick bgColor={props.color}>
+      <Div sx={{ display: "flex", alignItems: "center" }}>
+        <ApartmentIcon fontSize="large" />
+        <Div sx={{ ml: 2, flex: 1 }}>
+          <Typography color={"common.black"} variant={"h3"} mb={0.5}>
+            {props.label}{" "}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <Switch checked={value} onChange={_onChange} />
+          </Typography>
+        </Div>
+      </Div>
     </JumboCardQuick>
   );
 };
 
-export default TemperatureController;
+export default PublicUtility;

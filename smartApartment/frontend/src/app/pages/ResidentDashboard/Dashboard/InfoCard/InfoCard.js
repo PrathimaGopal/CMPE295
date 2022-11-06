@@ -3,13 +3,14 @@ import { Card, CardActions, CardContent, Typography } from "@mui/material";
 import Div from "@jumbo/shared/Div";
 import { Switch } from "@mui/material";
 import axios from "axios";
+import Android12Switch from "./AndroidSwitch";
 
 const InfoCard = (props) => {
-  const [value, setValue] = useState(props.dbValue);
+  const [value, setValue] = useState(0);
 
   const _onChange = (event) => {
     setValue(event.target.checked ? 1 : 0);
-    console.log(props.label, ":", event.target.checked);
+    console.log(props.deviceType, ":", event.target.checked);
   };
 
   useEffect(() => {
@@ -41,7 +42,7 @@ const InfoCard = (props) => {
     <Card
       sx={{
         height: 115,
-        backgroundImage: "linear-gradient(135deg, #38B8F2, #843CF6)",
+        backgroundImage: "linear-gradient(135deg, #E8F0FF, #95B8D1)",
       }}
     >
       <CardActions
@@ -72,8 +73,9 @@ const InfoCard = (props) => {
           ></Div>
         </Div>
         <CardContent sx={{ p: 2.5, flex: 1, alignSelf: "center" }}>
-          <Typography variant={"h5"} color={"common.white"}>
-            {props.title} <Switch checked={value} onChange={_onChange} />
+          <Typography variant={"h5"} color={"common.black"}>
+            {props.title}{" "}
+            <Android12Switch checked={value} onChange={_onChange} />
           </Typography>
         </CardContent>
       </CardActions>
