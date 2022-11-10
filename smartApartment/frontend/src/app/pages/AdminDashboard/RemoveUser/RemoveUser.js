@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import {
   Grid,
   TextField,
-  Select,
-  MenuItem,
-  InputLabel,
   Button,
   Typography,
   Dialog,
@@ -22,13 +19,7 @@ import axios from "axios";
 
 
 const defaultValues = {
-  firstname: "",
-  lastname: "",
   email: "",
-  ssn: "",
-  mobile: "",
-  aptno: "",
-  leaseExpiry: "",
 };
 
 const cardStyle = {
@@ -49,6 +40,8 @@ const RemoveUser = () => {
 
   const [formValues, setFormValues] = useState(defaultValues);
   const [open, setOpen] = React.useState(false);
+  const [openMessage, setOpenMessage] = React.useState(false);
+  const [message, setMessage] = React.useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -57,15 +50,22 @@ const RemoveUser = () => {
       [name]: value,
     });
   };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    axios.post('https://j4ltvhdp18.execute-api.us-west-1.amazonaws.com/prod/user',formValues)
-    alert("user is deleted");
+  const handleSubmit = async () => {
+    try{
+      const response = await axios.delete('https://j4ltvhdp18.execute-api.us-west-1.amazonaws.com/prod/user',{data : formValues});
+      setMessage(response?.data?.Message);
+      setOpen(false);
+      setOpenMessage(true);
+    }catch(error){
+      setMessage('Unknown error happened.');
+      setOpen(false);
+      setOpenMessage(true);
+    };
   };
 
-  const Transition = React.forwardRef((props, ref) => {
-    return <Slide direction="down" ref={ref} {...props} />;
-  });
+  // const Transition = React.forwardRef((props, ref) => {
+  //   return <Slide direction="down" ref={ref} {...props} />;
+  // });
 
   return (
     <Card style={cardStyle}>
@@ -82,51 +82,11 @@ const RemoveUser = () => {
           >
             <Typography variant={"h3"} mb={0.5}>
               <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Enter details to remove a resident
+              Delete a Resident.
             </Typography>
-            <br />
-            <InputLabel id="aptnumber">Apartment Number</InputLabel>
-            <Select
-              name="aptno"
-              id="aptnumber"
-              value={formValues.aptno}
-              label="Apartment Number"
-              onChange={handleInputChange}
-              required
-            >
-              <MenuItem value={1}>1</MenuItem>
-              <MenuItem value={2}>2</MenuItem>
-              <MenuItem value={3}>3</MenuItem>
-              <MenuItem value={4}>4</MenuItem>
-              <MenuItem value={5}>5</MenuItem>
-              <MenuItem value={6}>6</MenuItem>
-              <MenuItem value={7}>7</MenuItem>
-              <MenuItem value={8}>8</MenuItem>
-              <MenuItem value={9}>9</MenuItem>
-              <MenuItem value={10}>10</MenuItem>
-            </Select>
-            <br />
-            <TextField
-              id="firstname"
-              label="First Name"
-              name="firstname"
-              variant="outlined"
-              type="text"
-              value={formValues.firstname}
-              onChange={handleInputChange}
-              required
-            />
-            <br />
-            <TextField
-              id="lastname"
-              label="Last Name"
-              name="lastname"
-              variant="outlined"
-              type="text"
-              value={formValues.lastname}
-              onChange={handleInputChange}
-              required
-            />
+            <Typography variant={"h6"} mb={0.5}>
+              <i>Please use residents email id to delete.</i>
+            </Typography>
             <br />
             <TextField
               id="email"
@@ -134,43 +94,16 @@ const RemoveUser = () => {
               variant="outlined"
               type="text"
               name="email"
-              placeholder="abc@abc.com"
               value={formValues.email}
               onChange={handleInputChange}
               required
             />
             <br />
-            <TextField
-              id="mobile"
-              label="Mobile Number"
-              variant="outlined"
-              type="text"
-              name="mobile"
-              placeholder="1234567890"
-              value={formValues.mobile}
-              onChange={handleInputChange}
-              required
-            />
-            <br />
-            <TextField
-              id="date"
-              name="leaseExpiry"
-              label="Lease Expiry"
-              type="date"
-              placeholder="YYYY-MM-DD"
-              sx={{ width: 220 }}
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-            <br /> <br />
             <Button variant="contained" onClick={() => setOpen(true)}>
-              Confirm
+              Delete
             </Button>
             <Dialog
               open={open}
-              TransitionComponent={Transition}
-              keepMounted
               onClose={() => setOpen(false)}
               aria-describedby="alert-dialog-slide-description"
             >
@@ -185,7 +118,21 @@ const RemoveUser = () => {
               </DialogContent>
               <DialogActions>
                 <Button onClick={() => setOpen(false)}>Cancel</Button>
-                <Button onClick={() => setOpen(false)}>Submit</Button>
+                <Button onClick={() => handleSubmit()}>Submit</Button>
+              </DialogActions>
+            </Dialog>
+            <Dialog
+              open={openMessage}
+              onClose={() => setOpenMessage(false)}
+              aria-describedby="alert-dialog-slide-description"
+            >
+              <DialogContent>
+                <DialogContentText id="alert-dialog-slide-description">
+                  {message}
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={() => setOpenMessage(false)}>Ok</Button>
               </DialogActions>
             </Dialog>
           </Box>

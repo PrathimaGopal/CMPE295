@@ -43,7 +43,7 @@ export const latestNotifications = [
         item: "IoT device",
         complaint: "Door lock not working",
         time: getCustomDateTime(-37),
-        status: "true",
+        status: "false",
       },
     ],
   },
