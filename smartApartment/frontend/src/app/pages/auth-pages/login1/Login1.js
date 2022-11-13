@@ -21,14 +21,6 @@ import { ASSET_IMAGES } from "../../../utils/constants/paths";
 import UserPool from "app/UserPool";
 import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
 
-/*const validationSchema = yup.object({
-  email: yup
-    .string("Enter your email")
-    .email("Enter a valid email")
-    .required("Email is required"),
-  password: yup.string("Enter your password").required("Password is required"),
-});
-*/
 const Login1 = () => {
   const navigate = useNavigate();
   const { setActiveLayout } = useJumboApp();
@@ -65,8 +57,7 @@ const Login1 = () => {
     user.authenticateUser(authDetails, {
       onSuccess: (data) => {
         console.log("onSuccess", data);
-        navigate("/resident/dashboard", { state: { css: "true" } });
-        //return <Navigate to={"/resident/dashboard"} />;
+        navigate("/resident/dashboard", { replace: true });
       },
       onFailure: (data) => {
         console.error("onFailure", data);

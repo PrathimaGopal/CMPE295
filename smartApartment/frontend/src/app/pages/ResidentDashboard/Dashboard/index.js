@@ -9,8 +9,6 @@ import TempTimeGraph from "./TempratureTimeGraph";
 import HumidityController from "./HumidityController";
 import { useJumboApp } from "@jumbo/hooks";
 import { LAYOUT_NAMES } from "../../../layouts/layouts";
-import { useLocation } from "react-router-dom";
-// import TemperatureAnalytics from "./TemperatureAnalytics";
 
 export default function ResidentDashboard() {
   const { setActiveLayout } = useJumboApp();
