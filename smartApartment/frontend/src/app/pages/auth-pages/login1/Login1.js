@@ -10,34 +10,30 @@ import CardMedia from "@mui/material/CardMedia";
 import Link from "@mui/material/Link";
 import { alpha } from "@mui/material/styles";
 import { TextField } from "@mui/material";
-import { auth } from "@jumbo/services/auth/firebase/firebase";
-import * as yup from "yup";
-import { useAuthSignInWithEmailAndPassword } from "@react-query-firebase/auth";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Div from "@jumbo/shared/Div";
-import JumboTextField from "@jumbo/components/JumboFormik/JumboTextField";
+//import JumboTextField from "@jumbo/components/JumboFormik/JumboTextField";
 import { useJumboApp } from "@jumbo/hooks";
 import { LAYOUT_NAMES } from "../../../layouts/layouts";
 import { ASSET_IMAGES } from "../../../utils/constants/paths";
 import UserPool from "app/UserPool";
 import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
 
-const validationSchema = yup.object({
+/*const validationSchema = yup.object({
   email: yup
     .string("Enter your email")
     .email("Enter a valid email")
     .required("Email is required"),
   password: yup.string("Enter your password").required("Password is required"),
 });
-
+*/
 const Login1 = () => {
   const navigate = useNavigate();
   const { setActiveLayout } = useJumboApp();
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
-  const [userType, setUserType] = useState("");
 
   const handleEmailChange = (e) => {
     setEmailInput(e.target.value);
@@ -58,8 +54,8 @@ const Login1 = () => {
     // setPasswordInput(password.target.value);
     e.preventDefault();
     const user = new CognitoUser({
-        Username: emailInput,
-        Pool: UserPool,
+      Username: emailInput,
+      Pool: UserPool,
     });
     const authDetails = new AuthenticationDetails({
       Username: emailInput,
@@ -67,18 +63,19 @@ const Login1 = () => {
     });
 
     user.authenticateUser(authDetails, {
-        onSuccess: (data)=> {
-          console.log("onSuccess",data);
-          navigate("/resident/dashboard", { replace: true });
-        },
-        onFailure: (data) => {
-          console.error("onFailure", data);
-        },
-        newPasswordRequired: (data) => {
-          console.log("newPasswordRequired",data);
-          navigate("/resident/dashboard", { replace: true });
-          //alert("Enter valid credentials");
-        },
+      onSuccess: (data) => {
+        console.log("onSuccess", data);
+        navigate("/resident/dashboard", { state: { css: "true" } });
+        //return <Navigate to={"/resident/dashboard"} />;
+      },
+      onFailure: (data) => {
+        console.error("onFailure", data);
+      },
+      newPasswordRequired: (data) => {
+        console.log("newPasswordRequired", data);
+        navigate("/resident/dashboard", { replace: true });
+        //alert("Enter valid credentials");
+      },
     });
   };
 
