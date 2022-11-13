@@ -12,7 +12,15 @@ const AdminDashboard = () => {
     setActiveLayout(LAYOUT_NAMES.VERTICAL_ADMIN);
   });
 
+  const cssStyle = () => ({
+    paddingTop: `28px`,
+    paddingBottom: `28px`,
+    paddingLeft: `30px`,
+    paddingRight: `30px`,
+  });
+
   return (
+    <div class="CmtLayout-content" style={cssStyle()}>
     <Grid container spacing={3.75}>
       <Grid item xs={12} sm={6} lg={4}>
         <PublicUtility
@@ -67,6 +75,7 @@ const AdminDashboard = () => {
         />
       </Grid>
     </Grid>
+    </div>
   );
 };
 
