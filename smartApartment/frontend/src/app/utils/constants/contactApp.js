@@ -1,3 +1,4 @@
+
 export const VISIBLE_DIALOG_OPTIONS = {
     NONE: "none",
     CONTACT_EDIT: "contact-edit-dialog",
@@ -24,3 +25,5 @@ export const LABEL_DELETE_COMPLETED = "set-on-label-delete-complete";
 export const LABEL_LIST_REFRESH_COMPLETED = "set-on-label-list-refresh-completed";
 
 export const ASSIGN_LABELS_TO_CONTACTS = "set-on-assign-labels-to-contacts";
+
+export const POST_LOGIN = "set-on-post-login";

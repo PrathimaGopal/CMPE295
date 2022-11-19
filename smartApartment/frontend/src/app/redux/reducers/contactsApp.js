@@ -14,7 +14,8 @@ import {
     LABEL_EDIT_COMPLETED,
     LABEL_EDIT_STARTED,
     LABEL_LIST_REFRESH_COMPLETED,
-    VISIBLE_DIALOG_OPTIONS
+    VISIBLE_DIALOG_OPTIONS,
+    POST_LOGIN
 } from "../../utils/constants/contactApp";
 
 
@@ -24,10 +25,19 @@ const INIT_STATE = {
     currentContact: null,
     refreshLabelList: false,
     currentLabel: null,
+    isLoggedIn : false,
+    userName : null
 };
 
 const reducerFunc = (state = INIT_STATE, action) => {
     switch (action.type) {
+        case POST_LOGIN: {
+            return {
+                ...state,
+                userName: action.payload.userName,
+            }
+        }
+
         case CONTACT_ADDED: {
             return {
                 ...state,
