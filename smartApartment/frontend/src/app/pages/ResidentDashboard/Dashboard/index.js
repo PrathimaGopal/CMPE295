@@ -116,9 +116,9 @@ export default function ResidentDashboard() {
             humidityValue={92}
           />
         </Grid>
-        <Grid item xs={12} lg={12}>
+        {/* <Grid item xs={12} lg={12}>
           <TempHumidityGraph />
-        </Grid>
+        </Grid> */}
         <Grid item xs={12} lg={12}>
           <TempTimeGraph />
         </Grid>
