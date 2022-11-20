@@ -75,7 +75,7 @@ const InfoCard = (props) => {
         <CardContent sx={{ p: 2.5, flex: 1, alignSelf: "center" }}>
           <Typography variant={"h5"} color={"common.black"}>
             {props.title}{" "}
-            <Android12Switch checked={value} onChange={_onChange} />
+            <Android12Switch checked={props.dbValue} onChange={_onChange} />
           </Typography>
         </CardContent>
       </CardActions>

@@ -32,6 +32,7 @@ export default function ResidentDashboard() {
                 title="Front Door"
                 deviceType="FrontDoor"
                 image="linear-gradient(135deg, #38B8F2, #843CF6)"
+                dbValue={1}
               />
             </Grid>
             <Grid item xs={12} sm={6} lg={12}>
@@ -39,6 +40,7 @@ export default function ResidentDashboard() {
                 icon="kitchen"
                 title="Fridge"
                 deviceType="KitchenFridge"
+                dbValue={0}
               />
             </Grid>
           </Grid>
@@ -50,6 +52,7 @@ export default function ResidentDashboard() {
                 icon="light"
                 title="Oven"
                 deviceType="KitchenOven"
+                dbValue={0}
               />
             </Grid>
             <Grid item xs={12} sm={6} lg={12}>
@@ -57,6 +60,7 @@ export default function ResidentDashboard() {
                 icon="fire"
                 title="Stove"
                 deviceType="KitchenBurner"
+                dbValue={1}
               />
             </Grid>
           </Grid>
