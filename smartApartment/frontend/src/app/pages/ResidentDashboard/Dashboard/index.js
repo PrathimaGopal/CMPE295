@@ -83,7 +83,7 @@ export default function ResidentDashboard() {
             label="Bedroom"
             deviceType="BedroomLight"
             color="#144e7a"
-            dbValue={0}
+            dbValue={1}
           />
         </Grid>
         <Grid item xs={12} sm={6} lg={3}>
@@ -92,7 +92,7 @@ export default function ResidentDashboard() {
             label="Kitchen"
             deviceType="KitchenLight"
             color="#144e7a"
-            dbValue={1}
+            dbValue={0}
           />
         </Grid>
         <Grid item xs={12} sm={6} lg={3}>
@@ -101,7 +101,7 @@ export default function ResidentDashboard() {
             label="Bathroom"
             deviceType="BathroomLight"
             color="#144e7a"
-            dbValue={1}
+            dbValue={0}
           />
         </Grid>
         <Grid item xs={12} lg={6}>
@@ -117,7 +117,7 @@ export default function ResidentDashboard() {
             dbValue={1}
             deviceType="HumidityController"
             label="TemperatureController"
-            humidityValue={92}
+            humidityValue={54}
           />
         </Grid>
         {/* <Grid item xs={12} lg={12}>
