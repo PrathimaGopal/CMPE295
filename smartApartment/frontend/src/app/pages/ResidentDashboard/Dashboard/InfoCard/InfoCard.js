@@ -6,7 +6,7 @@ import axios from "axios";
 import Android12Switch from "./AndroidSwitch";
 
 const InfoCard = (props) => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(props.dbValue);
 
   const _onChange = (event) => {
     setValue(event.target.checked ? 1 : 0);
@@ -75,7 +75,7 @@ const InfoCard = (props) => {
         <CardContent sx={{ p: 2.5, flex: 1, alignSelf: "center" }}>
           <Typography variant={"h5"} color={"common.black"}>
             {props.title}{" "}
-            <Android12Switch checked={props.dbValue} onChange={_onChange} />
+            <Android12Switch checked={value} onChange={_onChange} />
           </Typography>
         </CardContent>
       </CardActions>

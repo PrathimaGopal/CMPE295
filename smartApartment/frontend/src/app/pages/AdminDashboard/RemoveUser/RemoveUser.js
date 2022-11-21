@@ -9,7 +9,6 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Slide,
 } from "@mui/material";
 import { Box } from "@mui/material";
 import { useJumboApp } from "@jumbo/hooks";
@@ -26,7 +25,7 @@ const cardStyle = {
   display: "block",
   transitionDuration: "0.3s",
   width: "40vw",
-  height: "45vw",
+  height: "20vw",
   alignItems: "center",
   margin: "0px auto",
 };
@@ -69,75 +68,70 @@ const RemoveUser = () => {
 
   return (
     <Card style={cardStyle}>
-        <Grid container>
-          <Box
-            component="form"
-            sx={{
-              "& > :not(style)": { m: 1, width: "45ch" },
-              marginLeft: "100px",
-            }}
-            noValidate
-            autoComplete="off"
-            onSubmit={handleSubmit}
-          >
-            <Typography variant={"h3"} mb={0.5}>
-              <br />
-              Delete a Resident.
-            </Typography>
-            <Typography variant={"h6"} mb={0.5}>
-              <i>Please use residents email id to delete.</i>
-            </Typography>
+      <Grid container>
+        <Box
+          component="form"
+          sx={{
+            "& > :not(style)": { m: 1, width: "45ch" },
+            marginLeft: "100px",
+          }}
+          noValidate
+          autoComplete="off"
+          onSubmit={handleSubmit}
+        >
+          <Typography variant={"h3"} mb={0.5}>
             <br />
-            <TextField
-              id="email"
-              label="E-mail"
-              variant="outlined"
-              type="text"
-              name="email"
-              value={formValues.email}
-              onChange={handleInputChange}
-              required
-            />
-            <br />
-            <Button variant="contained" onClick={() => setOpen(true)}>
-              Delete
-            </Button>
-            <Dialog
-              open={open}
-              onClose={() => setOpen(false)}
-              aria-describedby="alert-dialog-slide-description"
-            >
-              <DialogTitle>
-                {"Are you sture to delete the account?"}
-              </DialogTitle>
-              <DialogContent>
-                <DialogContentText id="alert-dialog-slide-description">
-                  Once you click Submit, the resident will no longer be allowed
-                  to enter the apartment.
-                </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={() => setOpen(false)}>Cancel</Button>
-                <Button onClick={() => handleSubmit()}>Submit</Button>
-              </DialogActions>
-            </Dialog>
-            <Dialog
-              open={openMessage}
-              onClose={() => setOpenMessage(false)}
-              aria-describedby="alert-dialog-slide-description"
-            >
-              <DialogContent>
-                <DialogContentText id="alert-dialog-slide-description">
-                  {message}
-                </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={() => setOpenMessage(false)}>Ok</Button>
-              </DialogActions>
-            </Dialog>
-          </Box>
+            &nbsp;&nbsp;&nbsp;&nbsp; Enter email id to Delete a Resident
+          </Typography>
           <br />
-        </Grid>
+          <TextField
+            id="email"
+            label="E-mail"
+            variant="outlined"
+            type="text"
+            name="email"
+            value={formValues.email}
+            onChange={handleInputChange}
+            required
+          />
+          <br /> <br /> 
+          <Button variant="contained" onClick={() => setOpen(true)}>
+            Delete
+          </Button>
+          <Dialog
+            open={open}
+            onClose={() => setOpen(false)}
+            aria-describedby="alert-dialog-slide-description"
+          >
+            <DialogTitle>{"Are you sture to delete the account?"}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-slide-description">
+                Once you click Submit, the resident will no longer be allowed to
+                enter the apartment.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={() => setOpen(false)}>Cancel</Button>
+              <Button onClick={() => handleSubmit()}>Submit</Button>
+            </DialogActions>
+          </Dialog>
+          <Dialog
+            open={openMessage}
+            onClose={() => setOpenMessage(false)}
+            aria-describedby="alert-dialog-slide-description"
+          >
+            <DialogContent>
+              <DialogContentText id="alert-dialog-slide-description">
+                {message}
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={() => setOpenMessage(false)}>Ok</Button>
+            </DialogActions>
+          </Dialog>
+        </Box>
+        <br />
+      </Grid>
     </Card>
   );
 };

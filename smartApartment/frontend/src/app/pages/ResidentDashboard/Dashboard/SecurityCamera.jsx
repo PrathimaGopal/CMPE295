@@ -7,13 +7,17 @@ import ReactPlayer from "react-player";
 const SecurityCamera = () => {
   return (
     <Card>
-      <CardHeader title={ "Security Camera" } />
-        <div style={{ display: 'flex' }}>
-        <div style={{ paddingLeft: '80px' }}>
-          <ReactPlayer controls width="140%" height="90%" url="https://www.youtube.com/watch?v=4i_GFrlaStQ" br/>
+      <CardHeader title={"Security Camera"} />
+      <div style={{ display: "flex" }}>
+        <div style={{ paddingLeft: "80px" }}>
+          <ReactPlayer
+            width="120%"
+            height="80%"
+            url="https://www.youtube.com/watch?v=4i_GFrlaStQ"
+          />
           <br /> <br />
         </div>
-        </div>
+      </div>
     </Card>
   );
 };

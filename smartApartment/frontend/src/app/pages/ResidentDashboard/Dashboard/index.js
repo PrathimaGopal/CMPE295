@@ -9,12 +9,14 @@ import TempTimeGraph from "./TempratureTimeGraph";
 import HumidityController from "./HumidityController";
 import { useJumboApp } from "@jumbo/hooks";
 import { LAYOUT_NAMES } from "../../../layouts/layouts";
+import { useLocation } from "react-router-dom";
 
-export default function ResidentDashboard() {
+export default function ResidentDashboard(props) {
   const { setActiveLayout } = useJumboApp();
   React.useEffect(() => {
     setActiveLayout(LAYOUT_NAMES.VERTICAL_DEFAULT);
   });
+  const navstate = useLocation();
   const cssStyle = () => ({
     paddingTop: `28px`,
     paddingBottom: `28px`,
@@ -23,6 +25,19 @@ export default function ResidentDashboard() {
   });
   return (
     <div class="CmtLayout-content" style={cssStyle()}>
+      <div
+        style={{
+          position: "absolute",
+          right: "100px",
+          top: "0",
+          display: "block",
+        }}
+        class="MuiTypography-root MuiTypography-h6"
+      >
+        <h4>
+          {navstate.state.fullName} (Apt# {navstate.state.aptno})
+        </h4>
+      </div>
       <Grid container spacing={3.75}>
         <Grid item xs={12} lg={3}>
           <Grid container spacing={3.75}>

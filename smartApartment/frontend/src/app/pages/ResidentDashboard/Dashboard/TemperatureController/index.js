@@ -38,7 +38,7 @@ const TemperatureController = (props) => {
     return (
       <JumboCardQuick>
         <Typography variant="h4" align="center">
-          TemperatureController &nbsp;&nbsp;
+          Temperature Controller &nbsp;&nbsp;
           <Switch checked={value} onChange={_onChange} defaultChecked />
         </Typography>
         <br />

@@ -1,8 +1,19 @@
 import React from "react";
-import { FormControl, Select, MenuItem, Card, InputLabel, TextField, Button } from "@mui/material";
+import {
+  FormControl,
+  Select,
+  MenuItem,
+  Card,
+  InputLabel,
+  TextField,
+  Button,
+} from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import axios from "axios";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/lab/Alert";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   margin: {
     margin: theme.spacing(2),
   },
@@ -17,34 +28,82 @@ const cardStyle = {
   width: "35vw",
   height: "40vw",
   alignContent: "center",
-  margin: "0px auto"
+  margin: "0px auto",
 };
 
 const ServiceRequest = ({ item }) => {
-  const [option, setOption] = React.useState('');
+  const [isLoading, setLoading] = React.useState(false);
+  const [option, setOption] = React.useState("");
+  const [complaint, setComplaint] = React.useState("");
   const [open, setOpen] = React.useState(false);
   const classes = useStyles();
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setOption(e.target.value);
   };
 
   const handleClose = () => {
     setOpen(false);
+    setLoading(false);
   };
 
   const handleOpen = () => {
     setOpen(true);
   };
 
-  const [complaint, setComplaint] = React.useState('');
+  const handleSnackBarClose = () => {
+    setLoading(false);
+  };
+
+  const apt = sessionStorage.getItem("apt");
+
+  const _onClick = () => {
+    console.log("Complaint is: ", complaint);
+    axios({
+      url: `https://hnsf6qoxn7.execute-api.us-west-1.amazonaws.com/ServiceRequest_Test/servicerequestfunction`,
+      method: "put",
+      data: {
+        id: window.crypto.randomUUID(),
+        apt: apt,
+        category: option,
+        message: complaint,
+      },
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          setLoading(true);
+          console.log("Submission Success", res.data);
+        }
+      })
+      .catch((err) => {
+        console.log("Submission Error:", err);
+      });
+  };
 
   return (
     <Card style={cardStyle}>
-      <div id="MenuItem" style={{ flex: 1, marginLeft: '60px', lineHeight: '100px' }}>
+      <Snackbar
+        open={isLoading}
+        autoHideDuration={3000}
+        onClose={handleSnackBarClose}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
+      >
+        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+          Service request submitted!
+        </Alert>
+      </Snackbar>
+      <div
+        id="MenuItem"
+        style={{ flex: 1, marginLeft: "60px", lineHeight: "100px" }}
+      >
         <h3>File your Complain:</h3>
         <FormControl style={{ minWidth: 400 }}>
-          <InputLabel id="demo-controlled-open-select-label">Choose an Option:</InputLabel>
+          <InputLabel id="demo-controlled-open-select-label">
+            Choose an Option:
+          </InputLabel>
           <Select
             labelId="demo-controlled-open-select-label"
             id="demo-controlled-open-select"
@@ -53,7 +112,8 @@ const ServiceRequest = ({ item }) => {
             onOpen={handleOpen}
             value={option}
             label="option"
-            onChange={handleChange}>
+            onChange={handleChange}
+          >
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
@@ -69,13 +129,16 @@ const ServiceRequest = ({ item }) => {
           </Select>
         </FormControl>
       </div>
-      <div id="Textfield" style={{ flex: 1, marginLeft: '60px', lineHeight: '100px' }}>
+      <div
+        id="Textfield"
+        style={{ flex: 1, marginLeft: "60px", lineHeight: "100px" }}
+      >
         <TextField
           id="standard-multiline-static"
           label="Write to us"
           multiline
           minRows={8}
-          onChange={(e, newValue) => setComplaint(newValue)}
+          onChange={(e) => setComplaint(e.target.value)}
           variant="standard"
           style={{ width: 400 }}
         />
@@ -86,7 +149,9 @@ const ServiceRequest = ({ item }) => {
         size="large"
         color="primary"
         className={classes.margin}
-        style={{ flex: 1, marginLeft: '200px' }}>
+        onClick={_onClick}
+        style={{ flex: 1, marginLeft: "200px" }}
+      >
         Submit
       </Button>
       <br /> <br />

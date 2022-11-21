@@ -207,7 +207,7 @@ const AddNewUser = () => {
                 </FormControl>
               </Grid>
               <TextField
-                id="outlined-basic"
+                id="email"
                 label="E-mail"
                 variant="outlined"
                 type="text"
@@ -219,7 +219,7 @@ const AddNewUser = () => {
               />
               <br />
               <TextField
-                id="outlined-basic"
+                id="mob number"
                 label="Mobile Number"
                 variant="outlined"
                 type="text"
@@ -246,7 +246,7 @@ const AddNewUser = () => {
               />
               <br />
               <TextField
-                id="outlined-basic"
+                id="ssn"
                 label="SSN"
                 variant="outlined"
                 type="text"
@@ -279,7 +279,7 @@ const AddNewUser = () => {
               </Select>
               <br />
               <TextField
-                id="date"
+                id="leaseExpiryDate"
                 name="leaseexpiry"
                 label="Lease Expiry"
                 type="date"

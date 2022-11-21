@@ -6,8 +6,6 @@ import axios from "axios";
  
 const TempControlSlider = (props) => {
  const [value, setValue] = useState(props.tempValue);
- const [currentTemp, setCurrentTemp] = useState(props.tempValue);
-;
  
  const getData = async() => {
    // Make API Call
@@ -23,13 +21,13 @@ const TempControlSlider = (props) => {
    tempData.forEach(temp => {
      if(latestTime === null) {
        latestTime = temp.time;
-       return setCurrentTemp(temp?.payload?.temperature);
+       return setValue(temp?.payload?.temperature);
      }
  
      if(temp?.payload?.temperature){
        if(new Date(temp.time) > new Date(latestTime)){
          latestTime = temp.time;
-         return setCurrentTemp(temp?.payload?.temperature);
+         return setValue(temp?.payload?.temperature);
        }
      }
    });
@@ -91,22 +89,21 @@ const TempControlSlider = (props) => {
  const classes = useStyles({ value });
  
  return (
-     <Box className={classes.root}>
-       <Typography id="discrete-slider-always" gutterBottom></Typography>
-       <Slider
-         onChange={handleChange}
-         getAriaValueText={valuetext}
-         aria-labelledby="discrete-slider-always"
-         value={currentTemp.toFixed(2)}
-         classes={classes}
-         step={1}
-         max={45}
-         marks={temperatureMarks}
-         valueLabelDisplay="on"
-         disabled={true}
-       />
-      
-     </Box>
+   <Box className={classes.root}>
+     <Typography id="discrete-slider-always" gutterBottom></Typography>
+     <Slider
+       onChange={handleChange}
+       getAriaValueText={valuetext}
+       aria-labelledby="discrete-slider-always"
+       value={value.toFixed(1)}
+       classes={classes}
+       step={1}
+       max={45}
+       marks={temperatureMarks}
+       valueLabelDisplay="on"
+       disabled={props.sliderEnable}
+     />
+   </Box>
  );
 };
  

@@ -25,18 +25,13 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormLabel from "@mui/material/FormLabel";
 import UserPool from "app/UserPool";
-import { CognitoUser, AuthenticationDetails, CognitoUserAttribute, AmazonCognitoIdentity } from "amazon-cognito-identity-js";
-import * as AWS from 'aws-sdk/global';
-import { useDispatch, useSelector } from 'react-redux';
-
-
-const validationSchema = yup.object({
-  email: yup
-    .string("Enter your email")
-    .email("Enter a valid email")
-    .required("Email is required"),
-  password: yup.string("Enter your password").required("Password is required"),
-});
+import {
+  CognitoUser,
+  AuthenticationDetails,
+  CognitoUserAttribute,
+  AmazonCognitoIdentity,
+} from "amazon-cognito-identity-js";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login1 = () => {
   const navigate = useNavigate();
@@ -68,16 +63,14 @@ const Login1 = () => {
     // setEmailInput(email.target.value);
     // setPasswordInput(password.target.value);
     e.preventDefault();
-    console.log('Inside sign in')
+    console.log("Inside sign in");
 
     var authenticationData = {
       Username: emailInput,
       Password: passwordInput,
     };
 
-    var authenticationDetails = new AuthenticationDetails(
-      authenticationData
-    );
+    var authenticationDetails = new AuthenticationDetails(authenticationData);
 
     var userData = {
       Username: emailInput,
@@ -87,52 +80,61 @@ const Login1 = () => {
     var cognitoUser = new CognitoUser(userData);
 
     cognitoUser.authenticateUser(authenticationDetails, {
-      onSuccess: function(result) {
+      onSuccess: function (result) {
         var accessToken = result.getAccessToken().getJwtToken();
-        console.log(accessToken)
-        cognitoUser.getUserAttributes(function(err, result) {
+        console.log(accessToken);
+        cognitoUser.getUserAttributes(function (err, result) {
           if (err) {
             console.log(err.message || JSON.stringify(err));
             return;
-          }else{
-            let accesslevel;
-            let userName;
-            let aptno;
+          } else {
+            var accesslevel;
+            var userName;
+            var lastName;
+            var aptno;
             for (let i = 0; i < result.length; i++) {
               console.log(
-                'attribute ' + result[i].getName() + ' has value ' + result[i].getValue()
+                "attribute " +
+                  result[i].getName() +
+                  " has value " +
+                  result[i].getValue()
               );
-              if(result[i].getName() == 'accesslevel'){
+              if (result[i].getName() === "custom:accesslevel") {
                 accesslevel = result[i].getValue();
               }
 
-              if(result[i].getName() == 'firstName'){
+              if (result[i].getName() === "custom:firstname") {
                 userName = result[i].getValue();
-              };
+              }
 
-              if(result[i].getName() == 'aptno'){
+              if (result[i].getName() === "custom:aptno") {
                 aptno = result[i].getValue();
-              };
+              }
 
+              if (result[i].getName() === "custom:lastname") {
+                lastName = result[i].getValue();
+              }
             }
             dispatch({
               type: "POST_LOGIN",
               payload: {
-                userName : `${userName} (${aptno})`
-              }
-            })
-            if(accesslevel == 'ADMIN'){
+                userName: `${userName} (${aptno})`,
+              },
+            });
+            if (accesslevel == "ADMIN") {
               navigate("/admin/dashboard");
-            }else{
-              navigate("/resident/dashboard");
+            } else {
+              const fullName = `${lastName}, ${userName}`;
+              sessionStorage.setItem("apt", aptno);
+              navigate("/resident/dashboard", {
+                state: { fullName, aptno },
+              });
             }
-            
           }
-          
         });
       },
-    
-      onFailure: function(err) {
+
+      onFailure: function (err) {
         console.log(err.message || JSON.stringify(err));
       },
     });
@@ -158,8 +160,6 @@ const Login1 = () => {
     //   var cognitoUser = result.user;
     //   console.log('user name is ' + cognitoUser.getUsername());
     // });
-
-    
 
     // user.authenticateUser(authDetails, {
     //   onSuccess: (data) => {
