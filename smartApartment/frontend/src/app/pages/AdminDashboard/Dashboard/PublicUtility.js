@@ -45,7 +45,7 @@ const PublicUtility = (props) => {
         <Div sx={{ ml: 2, flex: 1 }}>
           <Typography color={"common.black"} variant={"h3"} mb={0.5}>
             {props.label}{" "}
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <Switch checked={value} onChange={_onChange} />
           </Typography>
         </Div>

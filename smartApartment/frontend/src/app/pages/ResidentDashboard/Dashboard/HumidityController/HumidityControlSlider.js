@@ -23,14 +23,14 @@ const TempControlSlider = (props) => {
     tempData.forEach(temp => {
       if(latestTime === null) {
         latestTime = temp.time;
-        return setCurrentTemp(temp?.payload?.Humidity);
+        return setValue(temp?.payload?.Humidity);
       }
       
 
       if(temp?.payload?.Humidity){
         if(new Date(temp.time) > new Date(latestTime)){
           latestTime = temp.time;
-          return setCurrentTemp(temp?.payload?.Humidity);
+          return setValue(temp?.payload?.Humidity);
         }
       }
     });
@@ -98,22 +98,21 @@ const TempControlSlider = (props) => {
   const classes = useStyles({ value });
 
   return (
-      <Box className={classes.root}>
-        <Typography id="discrete-slider-always" gutterBottom></Typography>
-        <Slider
-          onChange={handleChange}
-          getAriaValueText={valuetext}
-          aria-labelledby="discrete-slider-always"
-          value={currentTemp.toFixed(2)}
-          classes={classes}
-          step={1}
-          max={100}
-          marks={temperatureMarks}
-          valueLabelDisplay="on"
-          disabled={true}
-        />
-        
-      </Box>
+    <Box className={classes.root}>
+      <Typography id="discrete-slider-always" gutterBottom></Typography>
+      <Slider
+        onChange={handleChange}
+        getAriaValueText={valuetext}
+        aria-labelledby="discrete-slider-always"
+        value={value.toFixed(2)}
+        classes={classes}
+        step={1}
+        max={100}
+        marks={temperatureMarks}
+        valueLabelDisplay="on"
+        disabled={props.sliderEnable}
+      />
+    </Box>
   );
 };
 
