@@ -7,6 +7,7 @@ import Div from "@jumbo/shared/Div";
 
 const TempTime = () => {
     const [activeChart, setActiveChart] = React.useState("expense");
+    
     return (
         <Card>
             <CardContent sx={{
@@ -33,6 +34,7 @@ const TempTime = () => {
                             onClick={() => setActiveChart("time")}
                     >Time</Button>
                 </Stack>
+               
             </CardContent>
             <TempTimeGraph activeChart={activeChart}/>
         </Card>

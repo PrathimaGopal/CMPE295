@@ -1,42 +1,46 @@
 import React, { useEffect, useState } from "react";
 import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import axios from "axios";
-import {timetempdata} from "./data"
 const TempTimeGraph = ({ activeChart }) => {
  const topChart = activeChart;
- const bottomChart = activeChart === "time" ? "temperature" : "time";
+ const bottomChart = activeChart === "time" ? "temprature" : "time";
  const topChartColor = activeChart === "time" ? "#F43B86" : "#2D46B9";
  const bottomChartColor = activeChart === "time" ? "#2D46B9" : "#F43B86";
- const [timetemp, setTimetemp] = useState(timetempdata);
+ const [timetemp, setTimetemp] = useState("");
+
  
  function fetchFromAws() {
+  var result = [];
+  var sanitizedTemp = {};
    axios
      .get(
-       "https://wtxngldocf.execute-api.us-west-1.amazonaws.com/prod/temp_graph"
+       "https://wtxngldocf.execute-api.us-west-1.amazonaws.com/prod/temp"
      )
      .then((res) => {
-       let holdaws = res.data;
-       var final = {};
-       var result = [];
-       holdaws.data.forEach((el) => {
-         for (var key in el) {
-           final[key] = {
-             temperature: el["temperature"],
-             time: el["time"]
-           };
-         }
-         result.push(final.time);
-       });
-        var sanitizedData = {};
-       sanitizedData["dataSummary"] = result;
-       setTimetemp(sanitizedData);
-     })
+        let holdaws = res.data;
+        var final = {};
+        
+        holdaws.data.forEach((el) => {
+          for (var key in el.payload) {
+            final[key] = {
+              temperature: el.payload["temperature"],
+              time: el.payload["time"],
+            };
+          }
+          result.push(final.temperature);
+          //console.log("time",time);
+        });
+      
+        sanitizedTemp["dataSummary"] = result;
+       // console.log("sanitizedTemp",sanitizedTemp)
+        setTimetemp(sanitizedTemp);
+      })
      .catch((err) => {
        console.log(err);
      });
-   }
+    }
    useEffect(() => {
-       fetchFromAws();
+       fetchFromAws();       
    },[])
  
  return (
@@ -83,7 +87,7 @@ const TempTimeGraph = ({ activeChart }) => {
            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
          }}
        />
-       <XAxis tickLine={false} dataKey="temperature" axisLine={false} />
+       <XAxis tickLine={false} dataKey="temp" axisLine={false} />
        <Area
          dataKey={bottomChart}
          stackId="2"
