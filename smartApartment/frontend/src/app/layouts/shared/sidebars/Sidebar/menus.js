@@ -3,7 +3,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import MessageIcon from "@mui/icons-material/Message";
 import LogoutIcon from "@mui/icons-material/Logout";
 import BuildIcon from "@mui/icons-material/Build";
-import DashboardIcon from '@mui/icons-material/Dashboard';
+import DashboardIcon from "@mui/icons-material/Dashboard";
 
 const menus = [
   {
@@ -29,7 +29,7 @@ const menus = [
         icon: <SettingsIcon sx={{ fontSize: 20 }} />,
       },
       {
-        uri: "/resident/Logout",
+        uri: "/",
         label: "Logout",
         type: "nav-item",
         icon: <LogoutIcon sx={{ fontSize: 20 }} />,

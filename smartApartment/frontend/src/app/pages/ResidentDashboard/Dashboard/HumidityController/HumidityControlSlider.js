@@ -7,28 +7,27 @@ import axios from "axios";
 const TempControlSlider = (props) => {
   const [value, setValue] = useState(props.humidityValue);
   const [currentTemp, setCurrentTemp] = useState(props.humidityValue);
-;
-
-  const getData = async() => {
+  const getData = async () => {
     // Make API Call
     axios.defaults.headers.common = {
       "X-API-Key": "pX5ri8vYyw7B3zwQeuPuD2CXJTN1vQT967oeBqsJ",
     };
-    const {data} = await axios.get("https://wtxngldocf.execute-api.us-west-1.amazonaws.com/prod/humid");
+    const { data } = await axios.get(
+      "https://wtxngldocf.execute-api.us-west-1.amazonaws.com/prod/humid"
+    );
 
     let tempData = data?.data;
 
     let latestTime = null;
 
-    tempData.forEach(temp => {
-      if(latestTime === null) {
+    tempData.forEach((temp) => {
+      if (latestTime === null) {
         latestTime = temp.time;
         return setValue(temp?.payload?.Humidity);
       }
-      
 
-      if(temp?.payload?.Humidity){
-        if(new Date(temp.time) > new Date(latestTime)){
+      if (temp?.payload?.Humidity) {
+        if (new Date(temp.time) > new Date(latestTime)) {
           latestTime = temp.time;
           return setValue(temp?.payload?.Humidity);
         }
@@ -36,11 +35,11 @@ const TempControlSlider = (props) => {
     });
 
     console.log(latestTime);
-  }
+  };
 
   useEffect(() => {
     getData();
-  },[]);
+  }, []);
 
   const temperatureMarks = [
     {
@@ -65,8 +64,8 @@ const TempControlSlider = (props) => {
     },
     {
       value: 100,
-      label: "100%"
-    }
+      label: "100%",
+    },
   ];
 
   const valuetext = (value) => {
@@ -93,6 +92,27 @@ const TempControlSlider = (props) => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    // Make API Call
+    axios.defaults.headers.common = {
+      "X-API-Key": "pX5ri8vYyw7B3zwQeuPuD2CXJTN1vQT967oeBqsJ",
+    };
+
+    axios({
+      url: `https://oziv0d75z4.execute-api.us-west-1.amazonaws.com/Apartment1_API_gateway`,
+      method: "post",
+      data: {
+        deviceType: "LivingRoomHumidity",
+        value: newValue,
+      },
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          console.log("Success", res.data);
+        }
+      })
+      .catch((err) => {
+        console.log("Error:", err);
+      });
   };
 
   const classes = useStyles({ value });
