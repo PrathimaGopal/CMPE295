@@ -14,13 +14,13 @@ const TempTimeGraph = ({ activeChart }) => {
   var sanitizedTemp = {};
    axios
      .get(
-       "https://wtxngldocf.execute-api.us-west-1.amazonaws.com/prod/temp"
+       "https://s0bnpwc6gg.execute-api.us-west-1.amazonaws.com/prod/roomtemp"
      )
      .then((res) => {
         let holdaws = res.data;
         var final = {};
         
-        holdaws.data.forEach((el) => {
+        holdaws.Items.forEach((el) => {
           for (var key in el.payload) {
             final[key] = {
               temperature: el.payload["temperature"],
