@@ -42,7 +42,7 @@ const menus = [
         icon: <SettingsIcon sx={{ fontSize: 20 }} />,
       },
       {
-        uri: "/admin/logout",
+        uri: "/",
         label: "Logout",
         type: "nav-item",
         icon: <LogoutIcon sx={{ fontSize: 20 }} />,

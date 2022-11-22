@@ -89,7 +89,6 @@ export default function ResidentDashboard(props) {
             label="Living"
             deviceType="LivingRoomLight"
             color="#144e7a"
-            dbValue={0}
           />
         </Grid>
         <Grid item xs={12} sm={6} lg={3}>
@@ -98,7 +97,6 @@ export default function ResidentDashboard(props) {
             label="Bedroom"
             deviceType="BedroomLight"
             color="#144e7a"
-            dbValue={1}
           />
         </Grid>
         <Grid item xs={12} sm={6} lg={3}>
@@ -107,7 +105,6 @@ export default function ResidentDashboard(props) {
             label="Kitchen"
             deviceType="KitchenLight"
             color="#144e7a"
-            dbValue={0}
           />
         </Grid>
         <Grid item xs={12} sm={6} lg={3}>
@@ -116,7 +113,6 @@ export default function ResidentDashboard(props) {
             label="Bathroom"
             deviceType="BathroomLight"
             color="#144e7a"
-            dbValue={0}
           />
         </Grid>
         <Grid item xs={12} lg={6}>

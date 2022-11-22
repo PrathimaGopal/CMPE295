@@ -48,7 +48,7 @@ const cardStyle = {
   display: "block",
   transitionDuration: "0.3s",
   width: "40vw",
-  height: "57vw",
+  height: "63vw",
   alignItems: "center",
   margin: "0px auto",
 };
