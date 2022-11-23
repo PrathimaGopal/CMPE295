@@ -18,20 +18,20 @@ const TempHumidity = () => {
             >
                 <Stack direction={"row"} spacing={3}>
                     <Div>
-                        <Typography variant={"h4"} mb={5}>Temperature - Humidity Graph</Typography>
+                        <Typography variant={"h4"} mb={5}>Humidity - Time Graph</Typography>
                     </Div>
                 </Stack>
                 <Stack direction={"row"} spacing={1}>
-                    <Button variant={activeChart === "temperature" ? "contained" : "outlined"}
+                    <Button variant={activeChart === "Humidity" ? "contained" : "outlined"}
                             size={"small"}
-                            onClick={() => setActiveChart("temperature")}
-                    >Temperature</Button>
-                    <Button variant={activeChart === "humidity" ? "contained" : "outlined"}
+                            onClick={() => setActiveChart("Humidity")}
+                    >Humidity</Button>
+                    <Button variant={activeChart === "time" ? "contained" : "outlined"}
                             disableElevation
                             color={"secondary"}
                             size={"small"}
-                            onClick={() => setActiveChart("humidity")}
-                    >Humidity</Button>
+                            onClick={() => setActiveChart("time")}
+                    >Time</Button>
                 </Stack>
             </CardContent>
             <TempHumidityGraph activeChart={activeChart}/>

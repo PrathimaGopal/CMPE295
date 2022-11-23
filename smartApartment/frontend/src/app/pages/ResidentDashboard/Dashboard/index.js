@@ -131,9 +131,9 @@ export default function ResidentDashboard(props) {
             humidityValue={54}
           />
         </Grid>
-        {/* <Grid item xs={12} lg={12}>
+        <Grid item xs={12} lg={12}>
           <TempHumidityGraph />
-        </Grid> */}
+        </Grid>
         <Grid item xs={12} lg={12}>
           <TempTimeGraph />
         </Grid>
