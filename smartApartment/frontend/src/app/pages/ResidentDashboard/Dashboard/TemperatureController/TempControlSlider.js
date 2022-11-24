@@ -33,7 +33,7 @@ const TempControlSlider = (props) => {
         }
       }
     });
-    console.timeLog("temperature");
+    //console.timeLog("temperature");
   };
 
   useEffect(() => {
@@ -119,7 +119,7 @@ const TempControlSlider = (props) => {
         onChange={handleChange}
         getAriaValueText={valuetext}
         aria-labelledby="discrete-slider-always"
-        value={value.toFixed(1)}
+        value={value?.toFixed(2)}
         classes={classes}
         step={1}
         max={45}

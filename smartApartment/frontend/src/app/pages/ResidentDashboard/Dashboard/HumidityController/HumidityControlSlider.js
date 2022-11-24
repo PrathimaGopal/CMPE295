@@ -124,7 +124,7 @@ const TempControlSlider = (props) => {
         onChange={handleChange}
         getAriaValueText={valuetext}
         aria-labelledby="discrete-slider-always"
-        value={value.toFixed(2)}
+        value={value?.toFixed(2)}
         classes={classes}
         step={1}
         max={100}

@@ -11,9 +11,6 @@ const InfoCard = (props) => {
   const _onChange = (event) => {
     setValue(event.target.checked ? 1 : 0);
     console.log(props.deviceType, ":", event.target.checked);
-  };
-
-  useEffect(() => {
     // Make API Call
     axios.defaults.headers.common = {
       "X-API-Key": "pX5ri8vYyw7B3zwQeuPuD2CXJTN1vQT967oeBqsJ",
@@ -24,7 +21,7 @@ const InfoCard = (props) => {
       method: "post",
       data: {
         deviceType: props.deviceType,
-        value: value,
+        value: event.target.checked,
       },
     })
       .then((res) => {
@@ -35,8 +32,7 @@ const InfoCard = (props) => {
       .catch((err) => {
         console.log("Error:", err);
       });
-  }, [props.label, value]);
-
+  };
 
   return (
     <Card
