@@ -76,6 +76,32 @@ Admin Dashboard - Service Request:
 
 ## Individual Contribution:
 
+__Anjali Kumari__:
+
+* Created Cognito pool in AWS to maintain the login functionality for authentication and user details with custom attributes for user & resident.https://github.com/PrathimaGopal/CMPE295/tree/main/smartApartment/frontend/src/app/pages/auth-pages/login1![image](https://user-images.githubusercontent.com/78071272/204062285-bbe3ab72-eb2d-4531-a483-73cf847100ae.png)
+* Created a user table in DynamoDb synced with UI where it will be simultaneously modified. 
+* Created API gateway of Get and Post function with the AWS lambda code to Add user and Remove user admin functionality from UI to DynamoDb and AWS pool which updates the Cognito pool with enabled and confirmed status.  ![image](https://user-images.githubusercontent.com/78071272/204062320-07bdcc5d-03a0-49cb-81e3-96b2760b347a.png)
+https://github.com/PrathimaGopal/CMPE295/blob/main/smartApartment/frontend/src/app/pages/AdminDashboard/AddNewUser/ 
+
+https://github.com/PrathimaGopal/CMPE295/blob/main/smartApartment/frontend/src/app/pages/AdminDashboard/RemoveUser/ 
+![image](https://user-images.githubusercontent.com/78071272/204062345-ef38ca8c-dae5-4f8f-8975-ced2852fd8fe.png)
+
+
+* Created API by using AWS lambda function to fetch the data related to the particular device and to check the state of all the switches of the apartment from the DynamoDb table and show the same state on UI while loading the dashboard. 
+https://github.com/PrathimaGopal/CMPE295/blob/main/smartApartment/frontend/src/app/pages/ResidentDashboard/Dashboard/Lights.jsx
+![image](https://user-images.githubusercontent.com/78071272/204062374-afae5ddc-8f6c-4d01-8650-27495f59eef4.png)
+
+* Created API and integrated it to read the latest value of Temperature and Humidity from dynamodb and displayed the same on the controller sliders of the resident dashboard with AWS lambda function and API integration. 
+https://github.com/PrathimaGopal/CMPE295/tree/main/smartApartment/frontend/src/app/pages/ResidentDashboard/Dashboard/TemperatureController
+![image](https://user-images.githubusercontent.com/78071272/204062407-e8705227-9a3f-4cec-85b6-89be5ee352f7.png)
+
+* Displayed the temperature and humidity graph on UI against time with the dynamic data of the table with AWS lambda function and API integration as a line graph.
+
+https://github.com/PrathimaGopal/CMPE295/tree/main/smartApartment/frontend/src/app/pages/ResidentDashboard/Dashboard/TempHumidityGraph
+![image](https://user-images.githubusercontent.com/78071272/204062475-75c0eb94-64f2-4805-a9fd-e6ae38f82196.png)
+
+
+
 __Prathima Gopal__:
 * Created two different layouts for Resident and Admin [smartApartment/frontend/src/app/layouts](https://github.com/PrathimaGopal/CMPE295/tree/main/smartApartment/frontend/src/app/layouts).
 * Created UI for the Website pages - Home page, About Us, Contact Us, Login [/smartApartment/frontend/src/app/pages/Others](https://github.com/PrathimaGopal/CMPE295/tree/main/smartApartment/frontend/src/app/pages/Others).
