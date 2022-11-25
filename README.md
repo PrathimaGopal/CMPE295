@@ -77,18 +77,68 @@ Admin Dashboard - Service Request:
 ## Individual Contribution:
 
 __Prathima Gopal__:
-* Created two different layouts for Resident and Admin (smartApartment/frontend/src/app/layouts).
-* Created UI for the Website pages - Home page, About Us, Contact Us, Login (/smartApartment/frontend/src/app/pages/Others).
+* Created two different layouts for Resident and Admin [smartApartment/frontend/src/app/layouts](https://github.com/PrathimaGopal/CMPE295/tree/main/smartApartment/frontend/src/app/layouts).
+* Created UI for the Website pages - Home page, About Us, Contact Us, Login [/smartApartment/frontend/src/app/pages/Others](https://github.com/PrathimaGopal/CMPE295/tree/main/smartApartment/frontend/src/app/pages/Others).
   - EmailJS template to send mail to aparment email when a request is submitted from Contact Us page.  
-* UI for Resident login (/smartApartment/frontend/src/app/pages/ResidentDashboard).
+* UI for Resident login [/smartApartment/frontend/src/app/pages/ResidentDashboard](https://github.com/PrathimaGopal/CMPE295/tree/main/smartApartment/frontend/src/app/pages/ResidentDashboard).
   - Dashboard (Components: Lights, MainController, InfoCard, Temperature Controller, Humidity Controller, Security Camera, Resident Dashboard).
   - Service Request (Component: Service Request).
-* UI for Admin Login (/smartApartment/frontend/src/app/pages/AdminDashboard).
+* UI for Admin Login [/smartApartment/frontend/src/app/pages/AdminDashboard](https://github.com/PrathimaGopal/CMPE295/tree/main/smartApartment/frontend/src/app/pages/AdminDashboard).
   - Dashboard (Components: Public Utility, Camera, AdminDashboard).
   - Add new user (Component: AddNewUser).
   - Remove user (Component: RemoveUser).
   - Service Request (Components: Messages, FeedMessage).
 * Created the Datapipeline to send messages from Application to IoT core using AWS Lambda & API gateway.
+
+__Shreevats Gadhikar & Sourab Gupta__:
+* BaseStationHome:
+  - BaseStation Code for Apartments Files - BaseStationHome.ino, secrets1.h
+```
+Functions: 
+```
+  - setup() - Setup Wifi, connect to IoT Core, setup up publish and subscribe topics, establish connection with end devices over Bluetooth and configure time of day over NTP.  
+  - messageHandler() - Handler to process messages over subscription topic. Send relevant message to relevant endpoint to control or fetch data from an end device.
+  - publishMessage() - Calls functions to publish messages from different endpoints. 
+  - publishCameraUrl() - Publish Camera Url to AWS IoT Cores over publish topic. 
+  - publishHumidityMessage() - Publish Humidity data to AWS IoT Core over Publish Topic. 
+  - publishTempMessage() - Publish Temperature data to AWS IoT Core over Publish Topic. 
+  - switch_living_room_lights() - Send Message to the endpoint to switch the living room lights. 
+  - OnDataRecv() - Callback to process messages recieved over bluetooth from end devices.
+  - OnDataSent() - Callback after a message is sent to the end device over bluetooth. 
+
+* LivingRoomLights:
+  - End Device Code for Living Room Lights for an apartment Files - LivingRoomLights.ino 
+```
+Functions():
+```
+  - setup() - Setup Bluetooth connection with the Basestation, register callbacks.
+  - OnDataRecv() - Handler to process messages from the Base Station. 
+  - OnDataSent() - Callback handler called after data is sent to the base station. 
+  - set_living_room_light_val() - Turn on/off a LED on the board representing a light.
+  - get_living_room_light_val() - Get Current State of Living Room Lights.
+
+* LivingRoomTempHumidity:
+  - End Device Code Temperature and Humidity Data for an apartment Files - LivingRoomTempHumidity.ino 
+  - Similar functions as Living Room lights plus one additional function to send dht sensor values to base station. 
+
+* For Public Places - Admin Base Station, Community lights for the admin.
+
+* BaseStationAdmin:
+  - Base Station Code for Public Places Files - BaseStationAdmin.ino, secrets1.h 
+```
+Functions():
+```
+  - setup() - Setup Wifi, connect to IoT Core, setup up publish and subscribe topics, establish connection with end devices over Bluetooth and configure time of day over NTP. 
+  - messageHandler() - Handler to process messages over subscription topic. Send relevant message to relevant endpoint to control or fetch data from an end device. 
+  - publishMessage() - Calls functions to publish messages from different endpoints.  
+  - switch_community_lights() - Send Message to the endpoint to switch the community lights. 
+  - OnDataRecv() - Callback to process messages recieved over bluetooth from end devices. 
+  - OnDataSent() - Callback after a message is sent to the end device over bluetooth.
+  - CommunityLights - End Device Code for Public Place Community Lights setup() - Setup Bluetooth connection with the Basestation, register callbacks. 
+  - OnDataRecv() - Handler to process messages from the Base Station.
+  - OnDataSent() - Callback handler called after data is sent to the base station.
+  - set_community_light_val() - Turn on/off a LED on the board representing a light. 
+  - get_community_light_val() - Get Current State of Community Lights.
 
 
 
