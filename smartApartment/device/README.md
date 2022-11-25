@@ -1,6 +1,6 @@
 The directory hirearchy has code for the following under Final_Working_Code.
 
-For Apratments - Base Station, Living Room End Device and Living Room Temperature and Humidity
+For Apartments - Base Station, Living Room End Device and Living Room Temperature and Humidity
 
 BaseStationHome - BaseStation Code for Apartments
 Files - BaseStationHome.ino, secrets1.h
