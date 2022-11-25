@@ -74,7 +74,21 @@ Admin Dashboard - Remove user:
 Admin Dashboard - Service Request:
 <img width="1466" alt="ServiecRequest_Admin" src="https://user-images.githubusercontent.com/70705974/203881867-9b053983-90d6-4501-9cf8-8786a82879fd.png">
 
+## Individual Contribution:
 
+__Prathima Gopal__:
+* Created two different layouts for Resident and Admin (smartApartment/frontend/src/app/layouts).
+* Created UI for the Website pages - Home page, About Us, Contact Us, Login (/smartApartment/frontend/src/app/pages/Others).
+  - EmailJS template to send mail to aparment email when a request is submitted from Contact Us page.  
+* UI for Resident login (/smartApartment/frontend/src/app/pages/ResidentDashboard).
+  - Dashboard (Components: Lights, MainController, InfoCard, Temperature Controller, Humidity Controller, Security Camera, Resident Dashboard).
+  - Service Request (Component: Service Request).
+* UI for Admin Login (/smartApartment/frontend/src/app/pages/AdminDashboard).
+  - Dashboard (Components: Public Utility, Camera, AdminDashboard).
+  - Add new user (Component: AddNewUser).
+  - Remove user (Component: RemoveUser).
+  - Service Request (Components: Messages, FeedMessage).
+* Created the Datapipeline to send messages from Application to IoT core using AWS Lambda & API gateway.
 
 
 
