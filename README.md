@@ -95,16 +95,21 @@ https://github.com/PrathimaGopal/CMPE295/tree/main/smartApartment/frontend/src/a
 
 __Prathima Gopal__:
 * Created two different layouts for Resident and Admin [smartApartment/frontend/src/app/layouts](https://github.com/PrathimaGopal/CMPE295/tree/main/smartApartment/frontend/src/app/layouts).
+
 * Created UI for the Website pages - Home page, About Us, Contact Us, Login [/smartApartment/frontend/src/app/pages/Others](https://github.com/PrathimaGopal/CMPE295/tree/main/smartApartment/frontend/src/app/pages/Others).
   - EmailJS template to send mail to apartment email when a request is submitted from Contact Us page.  
+  
 * UI for Resident login [/smartApartment/frontend/src/app/pages/ResidentDashboard](https://github.com/PrathimaGopal/CMPE295/tree/main/smartApartment/frontend/src/app/pages/ResidentDashboard).
   - Dashboard (Components: Lights, MainController, InfoCard, Temperature Controller, Humidity Controller, Security Camera, Resident Dashboard).
   - Service Request (Component: Service Request).
+  - Created a table in DynamoDB for service request and integrated it with the application using API.
+  
 * UI for Admin Login [/smartApartment/frontend/src/app/pages/AdminDashboard](https://github.com/PrathimaGopal/CMPE295/tree/main/smartApartment/frontend/src/app/pages/AdminDashboard).
   - Dashboard (Components: Public Utility, Camera, AdminDashboard).
   - Add new user (Component: AddNewUser).
   - Remove user (Component: RemoveUser).
   - Service Request (Components: Messages, FeedMessage).
+  
 * Created the Datapipeline to send messages from Application to IoT core using AWS Lambda & API gateway.
 
 __Shreevats Gadhikar & Sourab Gupta__:
